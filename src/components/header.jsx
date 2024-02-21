@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./nav.module.css";
 import utils from "./utils.module.css";
+import Cart from "./cart";
 
 export default function Header() {
   const [isNavMenuOpened, setIsNavMenuOpened] = useState(false);
@@ -99,7 +100,7 @@ export default function Header() {
               </li>
             </ul>
           </nav>
-          <div className={`${styles.navMenuRight} ${utils.flex}`}>{/* <Cart /> */}</div>
+          <div className={`${styles.navMenuRight} ${utils.flex}`}><Cart /></div>
         </div>
       </div>
       <nav className={`${styles.navMenu} ${styles.navfull}`}>
