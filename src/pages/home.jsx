@@ -12,13 +12,6 @@ export default function Home() {
     
     
     <div>
-            <Link to="/myorders">Meus pedidos</Link>
-            <br/>
-            <Link to="/signin">Login</Link>
-            <br/>
-            <Link to="/signup">Cadastro</Link>
-            <br/>
-            <Link to="/">Home</Link>
       <div> 
           <img className={styles.rectanglehomelarge} src="images/rectangle-home-large.png" alt="Rectangle Home Large"/>
       </div>
