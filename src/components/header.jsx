@@ -1,9 +1,10 @@
 "use client";
 
-// import Cart from "./cart";
+
 import styles from "./nav.module.css";
 import utils from "./utils.module.css";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom"
 
 export default function Header() {
   const [isNavMenuOpened, setIsNavMenuOpened] = useState(false);
@@ -46,9 +47,12 @@ export default function Header() {
         </button>
         <div className={styles.tophome}>
 
+
+
         <div className={styles.logohome}>
           <img src="images/logo.png" alt="logo" />
         </div>
+
 
         <div className={styles.inputbox}>
           <input type="text" placeholder="Buscar" />

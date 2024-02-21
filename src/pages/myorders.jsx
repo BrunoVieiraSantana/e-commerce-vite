@@ -1,13 +1,13 @@
 "use client";
 import React, { useContext } from 'react';
-import CartProvider from "@/components/cartProvider";
-import { CartContext } from "@/components/cartProvider";
-import { product } from "@/public/data";
-import AddToCart from "@/components/addToCart";
+import CartProvider from "../components/cartProvider";
+import { CartContext } from "../components/cartProvider";
+import { product } from "../../public/data";
+import AddToCart from "../components/addToCart";
 import 'tailwindcss/tailwind.css';
 
 
-const MyOrdersPage = () => {
+const MyOrders = () => {
   const { cartItems } = useContext(CartContext); 
 
   return (
@@ -50,4 +50,4 @@ const MyOrdersPage = () => {
   );
 };
 
-export default MyOrdersPage;
+export default MyOrders;

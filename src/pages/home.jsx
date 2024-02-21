@@ -3,6 +3,8 @@ import utils from "../components/utils.module.css";
 import ProductGallery from "../components//productGallery";
 import AddToCart from "../components/addToCart";
 import { product } from "../../public/data";
+import { Link, useNavigate } from "react-router-dom"
+import { useContext } from "react"
 
 
 export default function Home() {
@@ -10,7 +12,14 @@ export default function Home() {
     
     
     <div>
-      <div>
+            <Link to="/myorders">Meus pedidos</Link>
+            <br/>
+            <Link to="/signin">Login</Link>
+            <br/>
+            <Link to="/signup">Cadastro</Link>
+            <br/>
+            <Link to="/">Home</Link>
+      <div> 
           <img className={styles.rectanglehomelarge} src="images/rectangle-home-large.png" alt="Rectangle Home Large"/>
       </div>
 
