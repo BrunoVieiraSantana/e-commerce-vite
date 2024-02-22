@@ -5,10 +5,8 @@ import styles from './footer.module.css';
 export default function Footer() {
   const location = useLocation();
 
-  // Verifica se a rota atual é '/signin' ou '/signup'
   const isSignInOrSignUpRoute = location.pathname === "/signin" || location.pathname === "/signup";
 
-  // Renderiza o componente somente se não estiver em '/signin' ou '/signup'
   if (isSignInOrSignUpRoute) {
     return null;
   }
