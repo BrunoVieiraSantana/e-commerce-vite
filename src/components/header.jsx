@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import styles from "./nav.module.css";
 import utils from "./utils.module.css";
 import Cart from "./cart";
+import "../../src/globals.css";
+
 
 export default function Header() {
   const [isNavMenuOpened, setIsNavMenuOpened] = useState(false);

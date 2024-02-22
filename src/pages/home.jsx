@@ -19,8 +19,9 @@ export default function Home() {
       <div>
           <img className={styles.rectanglehome} src="images/rectangle-home.jpg" alt="Rectangle Home"/>
       </div>
+
       <a href="/myorders" className={styles.homebutton}>Aproveite a Oferta</a>
-      <h1>Destaques</h1>
+
     <div className={`${styles.main} ${utils.flex}`}>
 
       <div className={styles.productDetail}>
@@ -28,28 +29,24 @@ export default function Home() {
         <span
           className={`${styles.companyName} ${utils.upperCase} ${utils.textOrange400} ${utils.fs300} ${utils.fw700}`}
         >
-          {product.company}
-        </span>
-        <img src="images/card.png" />
-        <h1 className={`${utils.textNeutral700} ${utils.fs800}`}>
-          {product.title}
-        </h1>
-        <p>{product.description}</p>
-        <div className={`${styles.productPrice} ${utils.flex}`}>
-          <div className={`${styles.newPrice} ${utils.flex} ${utils.fw700}`}>
-            <span className={`${utils.textNeutral700} ${utils.fs500}`}>
-              R${product.currentPrice.toFixed(2)}
-            </span>
-
+          Destaques
+          </span>
+          {product.map((item) => (
+        <div key={item.id}>
+          <img src={item.images.mainImgs[0]} /> 
+          <h1>{item.title}</h1>
+          <p>{item.description}</p> 
+          <div>
+            <span>R${item.currentPrice.toFixed(2)}</span> 
           </div>
 
+          <AddToCart
+            name={item.title}
+            price={item.currentPrice}
+            thumbnail={item.images.thumbnails[0]} 
+          />
         </div>
-        
-        <AddToCart
-          name={product.title}
-          price={product.currentPrice}
-          thumbnail={product.images.thumbnails[0].src}
-        />
+      ))}
       </div>
     </div>
     </div>
