@@ -85,14 +85,14 @@ export default function Cart() {
   };
 
   return (
-  <>
-    <button className={styles.cart} onClick={toggleIsCartOpened}>
-      <img src="images/icon-cart.svg" alt="icon cart" aria-label="Cart"/>
-      {cartItems && cartItems.length ? (
-        <div className={styles.cartItemCount}>{cartItems.length}</div>
-      ) : null}
-    </button>
-    {isCartOpened ? <CartPopup items={cartItems} /> : null}
-  </>
+    <>
+      <button className={styles.cart} onClick={toggleIsCartOpened}>
+        <img src="images/icon-cart.svg" alt="icon cart" aria-label="Cart"/>
+        {cartItems.length ? (
+          <div className={styles.cartItemCount}>{cartItems.length}</div>
+        ) : null}
+      </button>
+      {isCartOpened ? <CartPopup items={cartItems} /> : null}
+    </>
   );
 }
