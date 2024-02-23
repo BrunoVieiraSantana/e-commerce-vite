@@ -1,12 +1,26 @@
 import styles from "./cart.module.css";
 import utils from "./utils.module.css";
 import { CartContext } from "./cartProvider";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
 export default function Cart() {
   const contextValue = useContext(CartContext);
   const { cartItems, setCartItems } = contextValue;
   const [isCartOpened, setIsCartOpened] = useState(false);
+  const [totalValue, setTotalValue] = useState(0);
+
+  useEffect(() => {
+    const calculateTotalValue = () => {
+      let total = 0;
+      cartItems.forEach((item) => {
+        total += item.subTotal;
+      });
+      setTotalValue(total);
+    };
+
+    calculateTotalValue();
+  }, [cartItems]);
+
   const toggleIsCartOpened = () => {
     setIsCartOpened((prev) => !prev);
   };
@@ -19,6 +33,8 @@ export default function Cart() {
           {items.length ? (
             <>
               <CartList items={items} />
+              <hr style={{marginTop: '20px', marginBottom: '20px'}}></hr>
+              <div className={`${utils.fw700} ${utils.textNeutral700}`}>Valor total: R${totalValue.toFixed(2)}</div>
               <button
                 className={`${styles.btnCheckout} ${utils.fw700} ${utils.textNeutral100}`}
               >

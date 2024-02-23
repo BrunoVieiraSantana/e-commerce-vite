@@ -32,6 +32,7 @@ export default function Home() {
         >
           Destaques
           </span>
+          <div className={cardStyles.cardContainer}>
           {product.map((item) => (
             <div key={item.id} className={cardStyles.card}>
               <img src={item.images.mainImgs[0]} className={cardStyles.img} /> 
@@ -45,20 +46,9 @@ export default function Home() {
                 thumbnail={item.images.thumbnails[0]} 
               />
               </div>
-
-              {/* <div className={cardStyles.card}>
-                <img src={item.images.mainImgs[0]} alt="card produto" className={cardStyles.img} />
-                <div className={cardStyles.content}>
-                  <h1>Camisa</h1>
-                  <span>Esporte</span>
-                  <h3>60,00R$</h3>
-                  <button>Comprar</button>
-                </div>
-              </div> */}
-              
-
             </div>
       ))}
+      </div>
       </div>
     </div>
     </div>
