@@ -1,6 +1,7 @@
 "use client";
 
 import styles from "./addToCart.module.css";
+import cardStyles from '../pages/card.module.css';
 import utils from "./utils.module.css";
 import { useState, useContext } from "react";
 import { CartContext } from "./cartProvider";
@@ -58,14 +59,7 @@ export default function AddToCart({ name, price, thumbnail }) {
       </div>
 
     </div>
-    <button
-        className={`${styles.btnAddToCart} ${utils.flex} ${utils.fw700}`}
-        onClick={onAddToCart}
-      >
-        <img src="images/icon-cart.svg" alt="Cart Icon" />
-        Comprar
-      </button>  
-
+    <button onClick={onAddToCart}>Comprar</button>  
     </div>
   );
 }

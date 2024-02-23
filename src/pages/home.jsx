@@ -1,9 +1,11 @@
 import styles from "../page.module.css";
+import cardStyles from './card.module.css';
 import utils from "../components/utils.module.css";
 import AddToCart from "../components/addToCart";
 import { product } from "../../public/data";
 import { Link, useNavigate } from "react-router-dom"
 import { useContext } from "react"
+
 
 
 export default function Home() {
@@ -31,20 +33,31 @@ export default function Home() {
           Destaques
           </span>
           {product.map((item) => (
-        <div key={item.id}>
-          <img src={item.images.mainImgs[0]} /> 
-          <h1>{item.title}</h1>
-          <p>{item.description}</p> 
-          <div>
-            <span>R${item.currentPrice.toFixed(2)}</span> 
-          </div>
+            <div key={item.id} className={cardStyles.card}>
+              <img src={item.images.mainImgs[0]} className={cardStyles.img} /> 
+              <div className={cardStyles.content}>
+                <h1>{item.title}</h1>
+                <p>{item.description}</p> 
+                <span>R${item.currentPrice.toFixed(2)}</span> 
+                <AddToCart
+                name={item.title}
+                price={item.currentPrice}
+                thumbnail={item.images.thumbnails[0]} 
+              />
+              </div>
 
-          <AddToCart
-            name={item.title}
-            price={item.currentPrice}
-            thumbnail={item.images.thumbnails[0]} 
-          />
-        </div>
+              {/* <div className={cardStyles.card}>
+                <img src={item.images.mainImgs[0]} alt="card produto" className={cardStyles.img} />
+                <div className={cardStyles.content}>
+                  <h1>Camisa</h1>
+                  <span>Esporte</span>
+                  <h3>60,00R$</h3>
+                  <button>Comprar</button>
+                </div>
+              </div> */}
+              
+
+            </div>
       ))}
       </div>
     </div>
