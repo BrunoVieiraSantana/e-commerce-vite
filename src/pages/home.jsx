@@ -48,7 +48,7 @@ export default function Home() {
                 <img src={item.mainimg} className={cardStyles.img} alt={item.title}/> 
                 <div className={cardStyles.content}>
                   <h1>{item.title}</h1>
-                  <p>{item.descript}</p> 
+                  <p>{item.description}</p> 
                   <span>R${item.currentprice.toFixed(2)}</span> 
                   <AddToCart
                     name={item.title}
