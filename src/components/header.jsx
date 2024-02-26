@@ -58,11 +58,15 @@ export default function Header() {
           <div className={styles.inputbox}>
             <input type="text" placeholder="Buscar" />
           </div>
-          <a to="/signup" className={styles.signupbutton}>
+          <a  className={styles.signupbutton}>
+            <Link to="/signup">
             Cadastre-se
+            </Link>
           </a>
-          <a to="/signin" className={styles.signinbutton}>
+          <a className={styles.signinbutton}>
+            <Link to="/signin">
             Entrar
+            </Link>
           </a>
           <nav
             className={
