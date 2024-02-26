@@ -8,7 +8,6 @@ const SignIn = () => {
   });
 
   const [error, setError] = useState(null);
-  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,8 +20,18 @@ const SignIn = () => {
         body: JSON.stringify(formData),
       });
       if (response.ok) {
+        const data = await response.json();
+        
+        // Armazenando o token de autenticação em um cookie
+        document.cookie = `token=${data.token}; path=/`;
+
+        // Armazenando o email, nome do usuário no localStorage
+        localStorage.setItem('userEmail', formData.email);
+        localStorage.setItem('userName', data.name);
+
         alert('Usuário logado com sucesso');
-        setLoggedIn(true);
+        // Redirecionando para a página inicial após o login bem-sucedido
+        window.location.href = "/";
       } else {
         setError('Credenciais inválidas. Verifique seu email e senha.');
       }
@@ -39,10 +48,6 @@ const SignIn = () => {
       [name]: value
     }));
   };
-
-  if (loggedIn) {
-    window.location.href = "/";
-  }
 
   return (
     <div className='bg-[#1E3A8A]'>

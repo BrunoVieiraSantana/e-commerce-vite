@@ -1,14 +1,15 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./nav.module.css";
 import utils from "./utils.module.css";
 import Cart from "./cart";
 import "../../src/globals.css";
 
-
 export default function Header() {
   const [isNavMenuOpened, setIsNavMenuOpened] = useState(false);
   const [isActive, setIsActive] = useState(false);
+  const [user, setUser] = useState(null);
+  const [checkedAuth, setCheckedAuth] = useState(false); 
   const location = useLocation();
 
   const toggleMenu = () => {
@@ -16,7 +17,29 @@ export default function Header() {
     setIsActive((prevValue) => !prevValue);
   };
 
+  useEffect(() => {
+    const token = document.cookie.split("; ").find((row) => row.startsWith("token="));
+    const userEmail = localStorage.getItem("userEmail");
+    const userName = localStorage.getItem("userName");
+
+    if (token || userEmail) {
+      setUser({ name: userName });
+    }
+
+    setCheckedAuth(true);
+  }, []);
+
   const isSignInOrSignUpRoute = location.pathname === "/signin" || location.pathname === "/signup";
+
+  if (!checkedAuth) {
+    return null;
+  }
+
+
+  if (!user && location.pathname === "/myorders") {
+    window.location.href = "/signin";
+    return null; 
+  }
 
   if (isSignInOrSignUpRoute) {
     return null;
@@ -31,25 +54,11 @@ export default function Header() {
               ? `${styles.navMenuToggleActive} ${styles.navMenuToggle}`
               : `${styles.navMenuToggle}`
           }
-          onClick={() => {
-            toggleMenu();
-          }}
+          onClick={toggleMenu}
         >
-          <span
-            className={`${styles.hamburgerLine1}  ${
-              isActive ? styles.active : ""
-            }`}
-          ></span>
-          <span
-            className={`${styles.hamburgerLine2}  ${
-              isActive ? styles.active : ""
-            }`}
-          ></span>
-          <span
-            className={`${styles.hamburgerLine3}  ${
-              isActive ? styles.active : ""
-            }`}
-          ></span>
+          <span className={`${styles.hamburgerLine1} ${isActive ? styles.active : ""}`}></span>
+          <span className={`${styles.hamburgerLine2} ${isActive ? styles.active : ""}`}></span>
+          <span className={`${styles.hamburgerLine3} ${isActive ? styles.active : ""}`}></span>
         </button>
         <div className={styles.tophome}>
           <div className={styles.logohome}>
@@ -58,16 +67,12 @@ export default function Header() {
           <div className={styles.inputbox}>
             <input type="text" placeholder="Buscar" />
           </div>
-          <a  className={styles.signupbutton}>
-            <Link to="/signup">
-            Cadastre-se
-            </Link>
-          </a>
-          <a className={styles.signinbutton}>
-            <Link to="/signin">
-            Entrar
-            </Link>
-          </a>
+
+            <Link className={styles.signupbutton} to="/signup">Cadastre-se</Link>
+
+
+            <Link className={styles.signinbutton} to="/signin">Entrar</Link>
+
           <nav
             className={
               isNavMenuOpened
@@ -75,27 +80,19 @@ export default function Header() {
                 : styles.navMenuMobile
             }
           >
-            <ul
-              className={`${styles.navMenuMobileLinks} ${utils.flex} ${utils.fw700}`}
-            >
+            <ul className={`${styles.navMenuMobileLinks} ${utils.flex} ${utils.fw700}`}>
               <li>
                 <Link to="/" className={`${styles.navMenuMobileLink} ${utils.flex}`}>
                   Home
                 </Link>
               </li>
               <li>
-                <Link
-                  className={`${styles.navMenuMobileLink} ${utils.flex}`}
-                  href="#"
-                >
+                <Link className={`${styles.navMenuMobileLink} ${utils.flex}`} href="#">
                   Produtos
                 </Link>
               </li>
               <li>
-                <Link
-                  className={`${styles.navMenuMobileLink} ${utils.flex}`}
-                  href="#"
-                >
+                <Link className={`${styles.navMenuMobileLink} ${utils.flex}`} href="#">
                   Categorias
                 </Link>
               </li>
@@ -106,7 +103,9 @@ export default function Header() {
               </li>
             </ul>
           </nav>
-          <div className={`${styles.navMenuRight} ${utils.flex}`}><Cart /></div>
+          <div className={`${styles.navMenuRight} ${utils.flex}`}>
+            <Cart user={user} /> {/* Passando o usuário como prop para o componente Cart */}
+          </div>
         </div>
       </div>
       <nav className={`${styles.navMenu} ${styles.navfull}`}>
@@ -131,6 +130,11 @@ export default function Header() {
               Meus Pedidos
             </Link>
           </li>
+          {user && (
+            <li>
+              <h1 className={`${styles.ola}`}>Olá, {user.name}</h1>
+            </li>
+          )}
         </ul>
       </nav>
       <div className={styles.inputboxcontainer}>
