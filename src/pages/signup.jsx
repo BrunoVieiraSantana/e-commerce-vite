@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from 'react';
 import 'tailwindcss/tailwind.css';
 
@@ -12,7 +11,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://e-commerce-api-bay.vercel.app/api/v1/users', {
+      const response = await fetch('https://e-commerce-api-bay.vercel.app/api/v1/users/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
