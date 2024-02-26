@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from 'react';
 import 'tailwindcss/tailwind.css';
 
@@ -8,6 +7,7 @@ const SignIn = () => {
     password: ''
   });
 
+  const [error, setError] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -24,10 +24,11 @@ const SignIn = () => {
         alert('Usuário logado com sucesso');
         setLoggedIn(true);
       } else {
-        alert('Usuário não cadastrado');
+        setError('Credenciais inválidas. Verifique seu email e senha.');
       }
     } catch (error) {
       console.error('Error logging in:', error);
+      setError('Ocorreu um erro ao fazer login. Por favor, tente novamente mais tarde.');
     }
   };
 
@@ -64,6 +65,7 @@ const SignIn = () => {
           <button className="flex items-center justify-center bg-orange-500 w-[260px] h-[60px] rounded-lg font-bold text-white" type="submit">
             Fazer Login
           </button>
+          {error && <p className="text-red-500">{error}</p>}
           <a href="/signup" className="pb-6 pt-8">
             Não possui cadastro?<span className="text-orange-500">Clique Aqui</span>
           </a>
