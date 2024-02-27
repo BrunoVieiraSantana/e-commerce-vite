@@ -98,13 +98,19 @@ export default function Header() {
               </li>
               <li>
                 <Link to="myorders" className={`${styles.navMenuMobileLink} ${utils.flex}`}>
-                  Meus Pedidos
+                  Meus Pedidos2
                 </Link>
               </li>
+              <li>
+                <Link className={styles.signupbuttonmobile} to="/signup">Cadastre-se</Link>
+              </li>
+              <li>
+              <Link className={styles.signinbuttonmobile} to="/signin">Entrar</Link>
+                </li>
             </ul>
           </nav>
           <div className={`${styles.navMenuRight} ${utils.flex}`}>
-            <Cart user={user} /> {/* Passando o usuário como prop para o componente Cart */}
+            <Cart user={user} />
           </div>
         </div>
       </div>
