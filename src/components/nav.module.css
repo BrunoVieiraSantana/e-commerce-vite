@@ -201,7 +201,7 @@
   display: none;
 }
 
-/* Mobile version is activated on or below 880px */
+
 @media (max-width: 880px) {
   .header {
     border: none;
@@ -221,31 +221,28 @@
     display: block;
     position: absolute;
     inset: 0;
-    background-color: hsl(var(--clr-neutral-800) / 0.75);
-    opacity: 0;
     visibility: hidden;
     transition: all 200ms ease-in-out;
-    z-index: 10;
+
   }
 
   .navMenuMobileLinks {
     flex-direction: column;
     --flex-gap: 32px;
     list-style: none;
-    width: 60%;
+    width: 100%;
     height: 100%;
     padding: 120px 0 0 40px;
     background-color: hsl(var(--clr-neutral-100));
     opacity: 0;
     transform: translateX(-100%);
-    transition: all 200ms ease-in-out;
   }
 
   .navMenuMobile.navMenuMobileActive {
     position: fixed;
-    right: 0;
+    left: 0;
     top: 0;
-    width: 32em;
+    width: 50%;
     visibility: visible;
     opacity: 1;
   }
@@ -356,7 +353,7 @@
 .inputbox .button:active {
   transform: translateY(-50%) scale(0.98);
 }
-/* Responsive */
+
 @media screen and (max-width: 500px) {
   .inputbox {
     height: 42px;
