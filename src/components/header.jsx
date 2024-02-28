@@ -98,7 +98,7 @@ export default function Header() {
             </div>
           )}
           {user && (
-              <div className={styles.ola}>
+              <div className={styles.msg}>
                   <CiLogout className={styles.icone} onClick={handleLogout} />
                   <h1>Olá, {user.name}</h1>
               </div>
