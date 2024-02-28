@@ -65,13 +65,15 @@ const SignUp = () => {
         </button>
         <a href="/signin" className={styles.link}>
           Já possui cadastro?
-          <span className={styles.link}>Clique Aqui</span>
+          <span className={styles.link2}>Clique Aqui</span>
         </a>
       </form>
     </main>
+    <a href="/">
     <div className={styles.hiddensmall}>
       <img className="w-[620px]" src="/images/logolarge.png" alt="LogoLarge" />
     </div>
+    </a>
     </div>
   );
 };

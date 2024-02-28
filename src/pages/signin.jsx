@@ -74,16 +74,18 @@ const SignIn = () => {
           </button>
           {error && <p className="text-red-500">{error}</p>}
           <a href="/signup" className={styles.link}>
-            Não possui cadastro?<span className={styles.link}>Clique Aqui</span>
+            Não possui cadastro?<span className={styles.link2}>Clique Aqui</span>
           </a>
         </form>
 
       </main>
  
     </div>
+    <a href="/">
       <div className={styles.hiddensmall}>
         <img className="w-[620px]" src="/images/logolarge.png" alt="LogoLarge" />
       </div>
+    </a>
     </div>
   );
 };
