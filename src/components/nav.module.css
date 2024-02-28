@@ -1,7 +1,8 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: center;
   max-width: 100%;
   height: 110px;
   background-color: #1E3A8A;
@@ -12,10 +13,14 @@
 
 .tophome {
   display: flex;
+  flex-direction: row;
+  justify-content: center; 
   align-items: center;
-  gap:30px;
+  gap: 30px;
   height: 100%;
+  
 }
+
 
 .navfull {
   background-color: #1E3A8A;
@@ -79,21 +84,6 @@
   text-decoration: none;
 }
 
-.navMenuToggle {
-  display: none;
-  border: none;
-  background-color: transparent;
-  width: 18px;
-  height: 16px;
-  position: relative;
-  cursor: pointer;
-  margin-top: 0px;
-  margin-right: 18px;
-  transition: all 200ms ease-in-out;
-  padding: 0;
-  margin: 0;
-}
-
 .hamburgerLine1,
 .hamburgerLine2,
 .hamburgerLine3 {
@@ -109,7 +99,7 @@
 .hamburgerLine1.active,
 .hamburgerLine2.active,
 .hamburgerLine3.active {
-  background-color: black;
+  background-color: rgb(255, 255, 255);
 }
 
 .hamburgerLine1 {
@@ -124,6 +114,21 @@
 .hamburgerLine3 {
   bottom: 0;
   transform-origin: 0% 100%;
+}
+
+.navMenuToggle {
+  display: none;
+  border: none;
+  background-color: transparent;
+  width: 18px;
+  height: 16px;
+  position: relative;
+  cursor: pointer;
+  margin-top: 0px;
+  margin-right: 18px;
+  transition: all 200ms ease-in-out;
+  padding: 0;
+  margin: 0;
 }
 
 .navMenuToggleActive .hamburgerLine1 {
@@ -295,14 +300,14 @@
   transform: translateY(-50%) scale(0.98);
 }
 
-
-
 .icone {
   margin-right: 5px; 
   color: #ffffff;
 }
 
-
+.inputboxmobile {
+  display: none; 
+}
 
 @media (max-width: 880px) {
   .inputbox,
@@ -312,10 +317,15 @@
   }
 
   .header {
-    border: none;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    max-width: 100%;
+    background-color: #1E3A8A;
+    margin: 0;
+    padding: 0;
     height: 68px;
-    border: none;
-    padding-inline: 20px;
   }
 
   .navMenuToggle {
@@ -399,24 +409,8 @@
     padding: 8px 18px;
   }
 
-}
-
-
-
-
-@media only screen and (max-width: 600px) {
   .inputboxmobile {
-    display: none;
-  }
+    display: block;
 }
 
-.inputboxmobile {
-  display: none; 
 }
-
-@media only screen and (max-width: 768px) {
-  .inputboxmobile {
-      display: block;
-  }
-}
-
