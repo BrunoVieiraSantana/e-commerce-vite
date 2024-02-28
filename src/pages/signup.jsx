@@ -1,5 +1,6 @@
+// SignUp.jsx
 import React, { useState } from 'react';
-import 'tailwindcss/tailwind.css';
+import styles from './sign.module.css';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -36,35 +37,42 @@ const SignUp = () => {
   };
 
   return (
-    <main className="bg-[#1E3A8A] min-h-screen">
+    <div className={styles.containerGeral}>
+    <main className={styles.container}>
       <a href="/">
-        <img className="w-[120px] mx-auto block pt-6 pb-6" src="images/logo.png" alt="Logo"></img>
+        <div className={styles.hiddenlarge}>
+          <img className="w-[120px] mx-auto block pt-6 pb-6" src="/images/logo.png" alt="Logo" />
+        </div>
       </a>
-      <form className="flex flex-col justify-center items-center bg-white mr-6 ml-6" onSubmit={handleSubmit}>
+      <form className={styles['form-container']} onSubmit={handleSubmit}>
         <h1 className="text-black text-2xl font-semibold pt-2">Cadastre-se</h1>
-        <div className="">
-          <label className="text-black flex flex-col justify-center items-center pb-4 pt-4">
+        <div>
+          <label className={styles['form-input']}>
             <h1 className="w-full font-bold">Nome*</h1>
-            <input name="name" value={formData.name} onChange={handleChange} placeholder="Digite seu nome" required className="bg-slate-100 p-3 rounded-md outline-none" />
+            <input name="name" value={formData.name} onChange={handleChange} placeholder="Digite seu nome" required className={styles['form-input']} />
           </label>
-          <label className="text-black flex flex-col w-full justify-center items-center pb-4 pt-4">
+          <label className={styles['form-input']}>
             <h1 className="w-full font-bold">Email*</h1>
-            <input name="email" value={formData.email} onChange={handleChange} placeholder="Digite seu e-mail" required type="email" className="bg-slate-100 p-3 rounded-md outline-none" />
+            <input name="email" value={formData.email} onChange={handleChange} placeholder="Digite seu e-mail" required type="email" className={styles['form-input']} />
           </label>
-          <label className="text-black flex flex-col w-full justify-center items-center  pb-4 pt-4">
+          <label className={styles['form-input']}>
             <h1 className="w-full font-bold">Senha*</h1>
-            <input name="password" value={formData.password} onChange={handleChange} placeholder="Digite sua senha" required type="password" className="bg-slate-100 p-3 rounded-md outline-none" />
+            <input name="password" value={formData.password} onChange={handleChange} placeholder="Digite sua senha" required type="password" className={styles['form-input']} />
           </label>
         </div>
-        <button type="submit" className="flex items-center justify-center bg-orange-500 w-[260px] h-[60px] rounded-lg font-bold text-white">
+        <button type="submit" className={styles.btn}>
           Cadastrar
         </button>
-        <a href="/signin" className="pb-6 pt-8">
+        <a href="/signin" className={styles.link}>
           Já possui cadastro?
-          <span className="text-orange-500">Clique Aqui</span>
+          <span className={styles.link}>Clique Aqui</span>
         </a>
       </form>
     </main>
+    <div className={styles.hiddensmall}>
+      <img className="w-[620px]" src="/images/logolarge.png" alt="LogoLarge" />
+    </div>
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./nav.module.css";
 import utils from "./utils.module.css";
@@ -11,10 +11,18 @@ export default function Header() {
   const [user, setUser] = useState(null);
   const [checkedAuth, setCheckedAuth] = useState(false); 
   const location = useLocation();
+  const navMenuRef = useRef(null);
 
   const toggleMenu = () => {
     setIsNavMenuOpened((prevValue) => !prevValue);
     setIsActive((prevValue) => !prevValue);
+  };
+
+  const handleClickOutside = (event) => {
+    if (navMenuRef.current && !navMenuRef.current.contains(event.target)) {
+      setIsNavMenuOpened(false);
+      setIsActive(false);
+    }
   };
 
   useEffect(() => {
@@ -27,6 +35,12 @@ export default function Header() {
     }
 
     setCheckedAuth(true);
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const isSignInOrSignUpRoute = location.pathname === "/signin" || location.pathname === "/signup";
@@ -34,7 +48,6 @@ export default function Header() {
   if (!checkedAuth) {
     return null;
   }
-
 
   if (!user && location.pathname === "/myorders") {
     window.location.href = "/signin";
@@ -68,12 +81,12 @@ export default function Header() {
             <input type="text" placeholder="Buscar" />
           </div>
 
-            <Link className={styles.signupbutton} to="/signup">Cadastre-se</Link>
+          <Link className={styles.signupbutton} to="/signup">Cadastre-se</Link>
 
-
-            <Link className={styles.signinbutton} to="/signin">Entrar</Link>
+          <Link className={styles.signinbutton} to="/signin">Entrar</Link>
 
           <nav
+            ref={navMenuRef}
             className={
               isNavMenuOpened
                 ? `${styles.navMenuMobileActive} ${styles.navMenuMobile}`
@@ -105,8 +118,8 @@ export default function Header() {
                 <Link className={styles.signupbuttonmobile} to="/signup">Cadastre-se</Link>
               </li>
               <li>
-              <Link className={styles.signinbuttonmobile} to="/signin">Entrar</Link>
-                </li>
+                <Link className={styles.signinbuttonmobile} to="/signin">Entrar</Link>
+              </li>
             </ul>
           </nav>
           <div className={`${styles.navMenuRight} ${utils.flex}`}>
