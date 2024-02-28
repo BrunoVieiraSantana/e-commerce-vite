@@ -4,12 +4,13 @@ import styles from "./nav.module.css";
 import utils from "./utils.module.css";
 import Cart from "./cart";
 import "../../src/globals.css";
+import { CiLogout } from "react-icons/ci";
 
 export default function Header() {
   const [isNavMenuOpened, setIsNavMenuOpened] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [user, setUser] = useState(null);
-  const [checkedAuth, setCheckedAuth] = useState(false); 
+  const [checkedAuth, setCheckedAuth] = useState(false);
   const location = useLocation();
   const navMenuRef = useRef(null);
 
@@ -43,6 +44,16 @@ export default function Header() {
     };
   }, []);
 
+  const handleLogout = () => {
+
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+    localStorage.removeItem("userEmail");
+    localStorage.removeItem("userName");
+
+    window.location.href = "/";
+  };
+
   const isSignInOrSignUpRoute = location.pathname === "/signin" || location.pathname === "/signup";
 
   if (!checkedAuth) {
@@ -51,7 +62,7 @@ export default function Header() {
 
   if (!user && location.pathname === "/myorders") {
     window.location.href = "/signin";
-    return null; 
+    return null;
   }
 
   if (isSignInOrSignUpRoute) {
@@ -80,11 +91,18 @@ export default function Header() {
           <div className={styles.inputbox}>
             <input type="text" placeholder="Buscar" />
           </div>
-
-          <Link className={styles.signupbutton} to="/signup">Cadastre-se</Link>
-
-          <Link className={styles.signinbutton} to="/signin">Entrar</Link>
-
+          {user ? null : (
+            <div className={styles.sign}>
+              <Link className={styles.signupbutton} to="/signup">Cadastre-se</Link>
+              <Link className={styles.signinbutton} to="/signin">Entrar</Link>
+            </div>
+          )}
+          {user && (
+              <div className={styles.ola}>
+                  <CiLogout className={styles.icone} onClick={handleLogout} />
+                  <h1>Olá, {user.name}</h1>
+              </div>
+          )}
           <nav
             ref={navMenuRef}
             className={
@@ -114,12 +132,16 @@ export default function Header() {
                   Meus Pedidos2
                 </Link>
               </li>
-              <li>
-                <Link className={styles.signupbuttonmobile} to="/signup">Cadastre-se</Link>
-              </li>
-              <li>
-                <Link className={styles.signinbuttonmobile} to="/signin">Entrar</Link>
-              </li>
+              {!user && (
+                <>
+                  <li>
+                    <Link className={styles.signupbuttonmobile} to="/signup">Cadastre-se</Link>
+                  </li>
+                  <li>
+                    <Link className={styles.signinbuttonmobile} to="/signin">Entrar</Link>
+                  </li>
+                </>
+              )}
             </ul>
           </nav>
           <div className={`${styles.navMenuRight} ${utils.flex}`}>
@@ -149,11 +171,7 @@ export default function Header() {
               Meus Pedidos
             </Link>
           </li>
-          {user && (
-            <li>
-              <h1 className={`${styles.ola}`}>Olá, {user.name}</h1>
-            </li>
-          )}
+
         </ul>
       </nav>
       <div className={styles.inputboxcontainer}>

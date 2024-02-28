@@ -30,7 +30,14 @@
   
 }
 
+.ola .icone:hover {
+  fill: orange; 
+}
 
+.sign{
+  display: flex;
+  justify-content: space-around;
+}
 
 .signupbutton {
   color: #ffffff; 
@@ -413,6 +420,16 @@
 }
 .inputboxmobile .button:active {
   transform: translateY(-50%) scale(0.98);
+}
+
+.ola {
+  display: flex;
+  align-items: center;
+}
+
+.icone {
+  margin-right: 5px; 
+  color: #ffffff;
 }
 
 @media only screen and (max-width: 600px) {
