@@ -72,6 +72,8 @@ export default function Header() {
   return (
     <header>
       <div className={`${styles.header} ${utils.flex}`}>
+
+        <div className={styles.tophome}>
         <button
           className={
             isNavMenuOpened
@@ -84,7 +86,6 @@ export default function Header() {
           <span className={`${styles.hamburgerLine2} ${isActive ? styles.active : ""}`}></span>
           <span className={`${styles.hamburgerLine3} ${isActive ? styles.active : ""}`}></span>
         </button>
-        <div className={styles.tophome}>
           <div className={styles.logohome}>
             <img src="images/logo.png" alt="logo" />
           </div>

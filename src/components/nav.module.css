@@ -212,6 +212,7 @@
   width: 100px;
 }
 
+
 .inputbox {
   position: relative;
   height: 46px;
@@ -310,32 +311,25 @@
 }
 
 @media (max-width: 880px) {
+  .navMenu,
   .inputbox,
   .signupbutton,
   .signinbutton {
     display: none;
   }
 
+
+  .tophome{
+    gap:0;
+  }
+
   .header {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
-    max-width: 100%;
-    background-color: #1E3A8A;
-    margin: 0;
-    padding: 0;
     height: 68px;
   }
 
   .navMenuToggle {
     display: block;
     z-index: 1000;
-  }
-
-  .navMenu {
-    display: none;
-    
   }
 
   .navMenuMobile {
