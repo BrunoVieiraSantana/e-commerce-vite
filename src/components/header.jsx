@@ -121,18 +121,18 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link className={`${styles.navMenuMobileLink} ${utils.flex}`} href="#">
+                <Link to="/products" className={`${styles.navMenuMobileLink} ${utils.flex}`} >
                   Produtos
                 </Link>
               </li>
               <li>
-                <Link className={`${styles.navMenuMobileLink} ${utils.flex}`} href="#">
+                <Link to="/categories" className={`${styles.navMenuMobileLink} ${utils.flex}`} >
                   Categorias
                 </Link>
               </li>
               <li>
-                <Link to="myorders" className={`${styles.navMenuMobileLink} ${utils.flex}`}>
-                  Meus Pedidos2
+                <Link to="/myorders" className={`${styles.navMenuMobileLink} ${utils.flex}`}>
+                  Meus Pedidos
                 </Link>
               </li>
               <li>
@@ -168,17 +168,17 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link className={`${styles.navMenuLink} ${utils.flex}`} href="#">
+            <Link to="/products" className={`${styles.navMenuLink} ${utils.flex}`} >
               Produtos
             </Link>
           </li>
           <li>
-            <Link className={`${styles.navMenuLink} ${utils.flex}`} href="#">
+            <Link to="/categories" className={`${styles.navMenuLink} ${utils.flex}`} >
               Categorias
             </Link>
           </li>
           <li>
-            <Link className={`${styles.navMenuLink} ${utils.flex}`} to="myorders">
+            <Link to="myorders" className={`${styles.navMenuLink} ${utils.flex}`} >
               Meus Pedidos
             </Link>
           </li>

@@ -8,6 +8,8 @@ import MyOrders from "./pages/myorders";
 import SignIn from "./pages/signin";
 import SignUp from "./pages/signup";
 import CartProvider from "./components/cartProvider";
+import Products from "./pages/products"; 
+import Categories from "./pages/categories"; 
 
 function App() {
   const [count, setCount] = useState(0);
@@ -21,6 +23,8 @@ function App() {
           <Route path="/myorders" element={<MyOrders/>}/>
           <Route path="/signin" element={<SignIn/>}/>
           <Route path="/signup" element={<SignUp/>}/>
+          <Route path="/products" element={<Products/>}/> 
+          <Route path="/categories" element={<Categories/>}/> 
         </Routes>
         <Footer />
       </CartProvider>
