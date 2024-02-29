@@ -5,6 +5,7 @@ import utils from "./utils.module.css";
 import Cart from "./cart";
 import "../../src/globals.css";
 import { CiLogout } from "react-icons/ci";
+import { IoMenu } from "react-icons/io5";
 
 export default function Header() {
   const [isNavMenuOpened, setIsNavMenuOpened] = useState(false);
@@ -74,7 +75,8 @@ export default function Header() {
       <div className={`${styles.header} ${utils.flex}`}>
 
         <div className={styles.tophome}>
-        <button
+        <IoMenu className={styles.iconemenu} onClick={toggleMenu} />
+        {/* <button
           className={
             isNavMenuOpened
               ? `${styles.navMenuToggleActive} ${styles.navMenuToggle}`
@@ -85,7 +87,7 @@ export default function Header() {
           <span className={`${styles.hamburgerLine1} ${isActive ? styles.active : ""}`}></span>
           <span className={`${styles.hamburgerLine2} ${isActive ? styles.active : ""}`}></span>
           <span className={`${styles.hamburgerLine3} ${isActive ? styles.active : ""}`}></span>
-        </button>
+        </button> */}
           <div className={styles.logohome}>
             <img src="images/logo.png" alt="logo" />
           </div>
@@ -132,6 +134,14 @@ export default function Header() {
                 <Link to="myorders" className={`${styles.navMenuMobileLink} ${utils.flex}`}>
                   Meus Pedidos2
                 </Link>
+              </li>
+              <li>
+                {user && (
+                <div className={styles.msgmobile}>
+                    <CiLogout className={styles.iconemobile} onClick={handleLogout} />
+                    <h1>Olá, {user.name}</h1>
+                </div>
+                )}
               </li>
               {!user && (
                 <>

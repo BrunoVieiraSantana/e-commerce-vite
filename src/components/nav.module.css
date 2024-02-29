@@ -27,6 +27,21 @@
   margin-top: -1px;
   padding: 0;
 
+
+}
+
+.iconemenu{
+  color: white;
+  display: flex;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  display: none;
+}
+
+.icone {
+  margin-right: 5px; 
+  color: #ffffff;
 }
 
 .msg {
@@ -36,6 +51,21 @@
 }
 
 .msg .icone:hover {
+  fill: orange; 
+}
+
+.iconemobile {
+  margin-right: 5px; 
+  color: #000000;
+}
+
+.msgmobile {
+  color: rgb(3, 3, 3);
+  display: flex;
+  align-items: center;
+}
+
+.msgmobile .iconemobile:hover {
   fill: orange; 
 }
 
@@ -210,11 +240,6 @@
   transform: translateY(-50%) scale(0.98);
 }
 
-.icone {
-  margin-right: 5px; 
-  color: #ffffff;
-}
-
 .inputboxmobile {
   display: none; 
 }
@@ -312,6 +337,30 @@
 }
 
 @media (max-width: 880px) {
+  .iconemenu{
+    display: block;
+  }
+  .inputbox {
+    height: 42px;
+    margin: 0 8px;
+  }
+  .inputbox i {
+    left: 12px;
+    font-size: 25px;
+  }
+  .inputbox input {
+    padding: 0 112px 0 50px;
+  }
+  .inputbox .button {
+    right: 12px;
+    font-size: 14px;
+    padding: 8px 18px;
+  }
+
+  .inputboxmobile {
+    display: block;
+}
+  .msg,
   .navMenu,
   .inputbox,
   .signupbutton,
@@ -321,7 +370,7 @@
 
 
   .tophome{
-    gap:0;
+    gap:80px;
   }
 
   .header {
@@ -389,25 +438,6 @@
     flex-shrink: 0;
   }
 
-  .inputbox {
-    height: 42px;
-    margin: 0 8px;
-  }
-  .inputbox i {
-    left: 12px;
-    font-size: 25px;
-  }
-  .inputbox input {
-    padding: 0 112px 0 50px;
-  }
-  .inputbox .button {
-    right: 12px;
-    font-size: 14px;
-    padding: 8px 18px;
-  }
 
-  .inputboxmobile {
-    display: block;
-}
 
 }
