@@ -1,4 +1,3 @@
-// SignIn.jsx
 import React, { useState } from 'react';
 import styles from './sign.module.css';
 
@@ -50,7 +49,6 @@ const SignIn = () => {
 
   return (
     <div className={styles.containerGeral}>
-    <div className={styles.container}>
       <main className={styles.container}>
         <a href="/">
           <div className={styles.hiddenlarge}>
@@ -80,7 +78,7 @@ const SignIn = () => {
 
       </main>
  
-    </div>
+
     <a href="/">
       <div className={styles.hiddensmall}>
         <img className="w-[620px]" src="/images/logolarge.png" alt="LogoLarge" />

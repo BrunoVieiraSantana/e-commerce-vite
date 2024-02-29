@@ -1,6 +1,11 @@
 * {
   outline: none;
 }
+
+body {
+  margin: 0; /* Remova a margem padrão do corpo */
+}
+
 .containerGeral {
   display: flex;
   flex-direction: row;
@@ -8,6 +13,7 @@
   align-items: center;
   background-color: #1E3A8A;
   min-height: 100vh;
+  margin-bottom: 0;
 }
 
 .container {
@@ -19,6 +25,7 @@
   background-color: #F1F5F9;
   min-height: 100vh;
   min-width: 100vh;
+  margin-bottom: 0;
 }
 
 .form-container {
@@ -30,6 +37,8 @@
   margin: 0 6px;
   min-width: 50vh;
   min-height: 70vh;
+  margin-bottom: 0;
+
 }
 
 .form-input {
@@ -84,8 +93,6 @@
 }
 
 
-
-
 @media screen and (max-width: 840px) {
   .hiddensmall {
     display: none;
@@ -94,6 +101,16 @@
 
   .container {
     background-color: #1E3A8A;
+    margin: 0;
+    margin-bottom: 0;
+    min-height: auto; 
+    min-width: auto;
+    
+  }
+
+  .containerGeral {
+    justify-content: center;
+
   }
 }
 
