@@ -3,18 +3,19 @@ import styles from "../page.module.css";
 import cardStyles from './card.module.css';
 import utils from "../components/utils.module.css";
 import AddToCart from "../components/addToCart";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const { search } = useLocation();
+  const categoryId = new URLSearchParams(search).get('category');
 
   useEffect(() => {
     async function fetchProductsAndCategories() {
       try {
-        // Fetch products
+
         const productsResponse = await fetch('https://e-commerce-api-bay.vercel.app/api/v1/products');
         if (!productsResponse.ok) {
           throw new Error('Failed to fetch products');
@@ -22,7 +23,7 @@ const Products = () => {
         const productsData = await productsResponse.json();
         setProducts(productsData.data);
 
-        // Fetch categories
+
         const categoriesResponse = await fetch('https://e-commerce-api-bay.vercel.app/api/v1/categories');
         if (!categoriesResponse.ok) {
           throw new Error('Failed to fetch categories');
@@ -38,18 +39,14 @@ const Products = () => {
   }, []);
 
   useEffect(() => {
-    // Filter products based on selected category
-    if (selectedCategory) {
-      const filtered = products.filter(product => product.category_id === selectedCategory);
+
+    if (categoryId) {
+      const filtered = products.filter(product => product.category_id === parseInt(categoryId));
       setFilteredProducts(filtered);
     } else {
       setFilteredProducts(products);
     }
-  }, [selectedCategory, products]);
-
-  const handleCategoryClick = (categoryId) => {
-    setSelectedCategory(categoryId);
-  };
+  }, [categoryId, products]);
 
   return (
     <div className={utils.flex}>
@@ -57,8 +54,10 @@ const Products = () => {
         <h2>Filtrar por Categoria</h2>
         <ul>
           {categories.map(category => (
-            <li key={category.id_category} onClick={() => handleCategoryClick(category.id_category)}>
-              {category.category_name}
+            <li key={category.id_category}>
+              <Link to={`/products?category=${category.id_category}`} className={categoryId === category.id_category ? styles.active : ''}>
+                {category.category_name}
+              </Link>
             </li>
           ))}
         </ul>
