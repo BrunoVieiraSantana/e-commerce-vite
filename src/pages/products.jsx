@@ -15,7 +15,6 @@ const Products = () => {
   useEffect(() => {
     async function fetchProductsAndCategories() {
       try {
-
         const productsResponse = await fetch('https://e-commerce-api-bay.vercel.app/api/v1/products');
         if (!productsResponse.ok) {
           throw new Error('Failed to fetch products');
@@ -23,13 +22,14 @@ const Products = () => {
         const productsData = await productsResponse.json();
         setProducts(productsData.data);
 
-
         const categoriesResponse = await fetch('https://e-commerce-api-bay.vercel.app/api/v1/categories');
         if (!categoriesResponse.ok) {
           throw new Error('Failed to fetch categories');
         }
         const categoriesData = await categoriesResponse.json();
-        setCategories(categoriesData.data);
+        // Adicionando uma opção "Exibir todas as categorias"
+        const allCategories = [{ id_category: null, category_name: "Todas as categorias" }, ...categoriesData.data];
+        setCategories(allCategories);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -39,9 +39,8 @@ const Products = () => {
   }, []);
 
   useEffect(() => {
-
     if (categoryId) {
-      const filtered = products.filter(product => product.category_id === parseInt(categoryId));
+      const filtered = categoryId === "null" ? products : products.filter(product => product.category_id === parseInt(categoryId));
       setFilteredProducts(filtered);
     } else {
       setFilteredProducts(products);
