@@ -89,7 +89,9 @@ export default function Header() {
           <span className={`${styles.hamburgerLine3} ${isActive ? styles.active : ""}`}></span>
         </button> */}
           <div className={styles.logohome}>
-            <img src="images/logo.png" alt="logo" />
+            <a href="/">
+            <img  src="images/logo.png" alt="logo" />
+            </a>
           </div>
           <div className={styles.inputbox}>
             <input type="text" placeholder="Buscar" />

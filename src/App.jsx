@@ -10,6 +10,7 @@ import SignUp from "./pages/signup";
 import CartProvider from "./components/cartProvider";
 import Products from "./pages/products"; 
 import Categories from "./pages/categories"; 
+import Details from "./pages/details"; 
 
 function App() {
   const [count, setCount] = useState(0);
@@ -25,6 +26,8 @@ function App() {
           <Route path="/signup" element={<SignUp/>}/>
           <Route path="/products" element={<Products/>}/> 
           <Route path="/categories" element={<Categories/>}/> 
+          <Route path="/details" element={<Details/>}/> 
+          
         </Routes>
         <Footer />
       </CartProvider>
