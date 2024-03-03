@@ -1,6 +1,5 @@
-// home.jsx
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // Importe o Link
+import { Link } from 'react-router-dom'; 
 import styles from "../page.module.css";
 import cardStyles from './card.module.css';
 import utils from "../components/utils.module.css";
@@ -45,7 +44,7 @@ export default function Home() {
           </span>
           <div className={cardStyles.cardContainer}>
             {products.map((item) => (
-              <Link key={item.id_product} to={`/details/${item.id_product}`}> {/* Modificação aqui */}
+              <Link key={item.id_product} to={`/details/${item.id_product}`}>
                 <div className={cardStyles.card}>
                   <img src={item.mainimg} className={cardStyles.img} alt={item.title}/> 
                   <div className={cardStyles.content}>

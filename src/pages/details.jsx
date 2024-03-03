@@ -1,12 +1,27 @@
-// details.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
+import 'tailwindcss/tailwind.css';
 
 const Details = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [qtdItens, setqtdItens] = useState(1);
+
+  const handleQtdItens = (action) => {
+    if (action === "+" && qtdItens < product.stock) {
+      setqtdItens(qtdItens + 1);
+    }
+    if (action === "-" && qtdItens > 1) {
+      setqtdItens(qtdItens - 1);
+    }
+  };
+
+  const addToCart = () => {
+    console.log(`Adicionar ${qtdItens} unidades de ${product.title} ao carrinho`);
+  };
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -41,11 +56,39 @@ const Details = () => {
         <p>{error}</p>
       ) : product ? (
         <div>
-          <h2>Detalhes do Produto {productId}</h2>
-          <p>Título: {product.title}</p>
-          <p>Descrição: {product.description}</p>
-          <p>Preço Atual: R${product.currentprice ? product.currentprice.toFixed(2) : 'N/A'}</p>
-          {/* Adicione outros detalhes conforme necessário */}
+          <main className=" flex justify-center items-center  ">
+            <div className="flex flex-col md:flex-row md:items-center mt-14 md:m-40 shadow-lg bg-slate-100 p-6 md:p-7 gap-2 md:gap-16 font-Inter">
+              <section className="w-[350px]">
+                <img className="w-[223px] md:w-[309px] h-[172px] md:h-[342px]" src={product.mainimg} alt="Imagem Principal" />
+                <span className="text-2xl hidden md:flex flex-col gap-6 mt-10">
+                  <p className="text-[#1E3A8A] font-semibold ">Quantidade Disponível</p>
+                  <p className="font-medium text-stone-500 ">{product.stock === 0 ? 'Produto esgotado' : `${product.stock} Itens Disponíveis`}</p>
+                </span>
+              </section>
+              <section className="flex flex-col ">
+
+                <article className="flex flex-col  gap-7 my-10">
+                  <h3 className="font-semibold text-[#1E3A8A] text-4xl">{product.title}</h3>
+                  <p className=" text-black text-2xl">R${product.currentprice ? product.currentprice.toFixed(2) : 'N/A'}</p>
+                  <p className="w-[224px] md:w-[514px] text-wrap ">{product.description}</p>
+                </article>
+
+                <article className="flex flex-col md:flex-row items-center gap-7 my-10">
+                  <span className="flex flex-col items-center">
+                    <p className="font-semibold text-2xl text-black">Quantidade:</p>
+                    <div className="flex bg-white border border-black rounded-md h-10 w-24 justify-center items-center gap-3">
+                      <p className="text-2xl font-semibold text-black">{qtdItens}</p>
+                      <div className="border-black text-black">
+                      <BiSolidUpArrow onClick={() => handleQtdItens("+")} />
+                      <BiSolidDownArrow onClick={() => handleQtdItens("-")} />
+                      </div>
+                    </div>
+                  </span>
+                  <button className="bg-[#1E3A8A] text-white w-[222px] md:w-[352px] h-14 md:h-20 rounded-lg font-semibold text-2xl" onClick={addToCart}>Comprar</button>
+                </article>
+              </section>
+            </div>
+          </main>
         </div>
       ) : (
         <p>Nenhum produto encontrado com o ID {productId}</p>
