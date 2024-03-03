@@ -1,19 +1,16 @@
+// details.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import detailsStyles from '../pages/details.module.css';
+import { useParams } from 'react-router-dom';
 
 const Details = () => {
+  const { productId } = useParams();
+
+  // Aqui você pode usar o productId para buscar os detalhes do produto
 
   return (
     <div>
-        <div className={`${detailsStyles.container}`}>
-            <aside className={`${detailsStyles.card}`}>
-            <menu className={`${detailsStyles.menu}`}>
-                <a className={detailsStyles.menuLink}>Detalhes</a>
-            </menu>
-            </aside>
-        </div>
+      <h2>Detalhes do Produto {productId}</h2>
     </div>
   );
 }

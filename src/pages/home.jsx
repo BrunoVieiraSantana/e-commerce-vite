@@ -1,9 +1,10 @@
+// home.jsx
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Importe o Link
 import styles from "../page.module.css";
 import cardStyles from './card.module.css';
 import utils from "../components/utils.module.css";
 import AddToCart from "../components/addToCart";
-import { Link, useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -44,19 +45,21 @@ export default function Home() {
           </span>
           <div className={cardStyles.cardContainer}>
             {products.map((item) => (
-              <div key={item.id_product} className={cardStyles.card}>
-                <img src={item.mainimg} className={cardStyles.img} alt={item.title}/> 
-                <div className={cardStyles.content}>
-                  <h1>{item.title}</h1>
-                  <p>{item.description}</p> 
-                  <span>R${item.currentprice.toFixed(2)}</span> 
-                  <AddToCart
-                    name={item.title}
-                    price={item.currentprice}
-                    thumbnail={item.thumbnail} 
-                  />
+              <Link key={item.id_product} to={`/details/${item.id_product}`}> {/* Modificação aqui */}
+                <div className={cardStyles.card}>
+                  <img src={item.mainimg} className={cardStyles.img} alt={item.title}/> 
+                  <div className={cardStyles.content}>
+                    <h1>{item.title}</h1>
+                    <p>{item.description}</p> 
+                    <span>R${item.currentprice.toFixed(2)}</span> 
+                    <AddToCart
+                      name={item.title}
+                      price={item.currentprice}
+                      thumbnail={item.thumbnail} 
+                    />
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

@@ -1,3 +1,4 @@
+// App.jsx
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState } from 'react';
 import './App.css';
@@ -26,8 +27,7 @@ function App() {
           <Route path="/signup" element={<SignUp/>}/>
           <Route path="/products" element={<Products/>}/> 
           <Route path="/categories" element={<Categories/>}/> 
-          <Route path="/details" element={<Details/>}/> 
-          
+          <Route path="/details/:productId" element={<Details/>}/> {/* Modificação aqui */}
         </Routes>
         <Footer />
       </CartProvider>
