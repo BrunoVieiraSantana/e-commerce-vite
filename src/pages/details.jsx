@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
-import 'tailwindcss/tailwind.css';
+
+
 
 const Details = () => {
   const { productId } = useParams();

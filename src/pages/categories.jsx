@@ -20,14 +20,16 @@ const Categories = () => {
 
   return (
     <div>
-      <h2>Categorias</h2>
-      <ul>
-        {categories.map(category => (
-          <li key={category.id_category}>
-            <Link to={`/products?category=${category.id_category}`}>{category.category_name}</Link>
-          </li> 
-        ))}
-      </ul>
+      <main  className=" flex justify-center my-14 md:my-20  " >
+        <div className="grid md:grid-cols-4 gap-10">
+          {categories.map(category => (
+            <main key={category.id_category} className="flex items-center shadow-xl bg-slate-100 rounded-lg w-52 h-24">
+              <img src={`images/${category.id_category}.png`} alt="" className="h-20 w-20" />
+              <Link className="mx-3 font-Inter font-semibold text-base text-black" to={`/products?category=${category.id_category}`}>{category.category_name}</Link>
+            </main>
+          ))}
+        </div>
+      </main>
     </div>
   );
 }
