@@ -3,6 +3,7 @@ import utils from "./utils.module.css";
 import { CartContext } from "./cartProvider";
 import { useContext, useState, useEffect } from "react";
 
+
 export default function Cart() {
   const contextValue = useContext(CartContext);
   const { cartItems, setCartItems } = contextValue;
@@ -89,7 +90,7 @@ export default function Cart() {
             onRemove(id);
           }}
         >
-          <img src="images/icon-delete.svg" alt="cart item delete" />
+          <img src="/images/icon-delete.svg" alt="cart item delete" />
         </button>
       </li>
     );
@@ -103,7 +104,7 @@ export default function Cart() {
   return (
     <>
       <button className={styles.cart} onClick={toggleIsCartOpened}>
-        <img src="images/icon-cart.svg" alt="icon cart" aria-label="Cart"/>
+        <img src="/images/icon-cart.svg" alt="icon cart" aria-label="Cart"/>
         {cartItems.length ? (
           <div className={styles.cartItemCount}>{cartItems.length}</div>
         ) : null}

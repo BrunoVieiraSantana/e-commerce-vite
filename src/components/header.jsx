@@ -90,7 +90,7 @@ export default function Header() {
         </button> */}
           <div className={styles.logohome}>
             <a href="/">
-            <img  src="images/logo.png" alt="logo" />
+            <img  src="/images/logo.png" alt="logo" />
             </a>
           </div>
           <div className={styles.inputbox}>

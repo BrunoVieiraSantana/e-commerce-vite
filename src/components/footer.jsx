@@ -22,9 +22,9 @@ export default function Footer() {
         </div>
 
         <section className={styles.footer__social_i}>
-          <img src="images/face.png" alt="Facebook" />
-          <img src="images/inst.png" alt="Instagram" />
-          <img src="images/what.png" alt="WhatsApp" />
+          <img src="/images/face.png" alt="Facebook" />
+          <img src="/images/inst.png" alt="Instagram" />
+          <img src="/images/what.png" alt="WhatsApp" />
         </section>
 
         <div className={styles.footer__info}>

@@ -28,11 +28,11 @@ export default function Home() {
   return (
     <div>
       <div>
-        <img className={styles.rectanglehomelarge} src="images/rectangle-home-large.png" alt="Rectangle Home Large"/>
+        <img className={styles.rectanglehomelarge} src="/images/rectangle-home-large.png" alt="Rectangle Home Large"/>
       </div>
 
       <div>
-        <img className={styles.rectanglehome} src="images/rectangle-home.jpg" alt="Rectangle Home"/>
+        <img className={styles.rectanglehome} src="/images/rectangle-home.jpg" alt="Rectangle Home"/>
       </div>
 
       <a href="/myorders" className={styles.homebutton}>Aproveite a Oferta</a>
