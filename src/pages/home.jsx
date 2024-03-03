@@ -51,11 +51,11 @@ export default function Home() {
                     <h1>{item.title}</h1>
                     <p>{item.description}</p> 
                     <span>R${item.currentprice.toFixed(2)}</span> 
-                    <AddToCart
+                    {/* <AddToCart
                       name={item.title}
                       price={item.currentprice}
                       thumbnail={item.thumbnail} 
-                    />
+                    /> */}
                   </div>
                 </div>
               </Link>

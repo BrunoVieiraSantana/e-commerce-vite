@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
-
+import { CartContext } from "../components/cartProvider";
+import AddToCartD from "../components/addToCartD";
 
 
 const Details = () => {
@@ -73,20 +74,11 @@ const Details = () => {
                   <p className=" text-black text-2xl">R${product.currentprice ? product.currentprice.toFixed(2) : 'N/A'}</p>
                   <p className="w-[224px] md:w-[514px] text-wrap ">{product.description}</p>
                 </article>
-
-                <article className="flex flex-col md:flex-row items-center gap-7 my-10">
-                  <span className="flex flex-col items-center">
-                    <p className="font-semibold text-2xl text-black">Quantidade:</p>
-                    <div className="flex bg-white border border-black rounded-md h-10 w-24 justify-center items-center gap-3">
-                      <p className="text-2xl font-semibold text-black">{qtdItens}</p>
-                      <div className="border-black text-black">
-                      <BiSolidUpArrow onClick={() => handleQtdItens("+")} />
-                      <BiSolidDownArrow onClick={() => handleQtdItens("-")} />
-                      </div>
-                    </div>
-                  </span>
-                  <button className="bg-[#1E3A8A] text-white w-[222px] md:w-[352px] h-14 md:h-20 rounded-lg font-semibold text-2xl" onClick={addToCart}>Comprar</button>
-                </article>
+                  <AddToCartD
+                        name={product.title}
+                        price={product.currentprice}
+                        thumbnail={product.thumbnail} 
+                      />
               </section>
             </div>
           </main>
