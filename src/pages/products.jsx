@@ -27,7 +27,6 @@ const Products = () => {
           throw new Error('Failed to fetch categories');
         }
         const categoriesData = await categoriesResponse.json();
-
         const allCategories = [{ id_category: null, category_name: "Todas as categorias" }, ...categoriesData.data];
         setCategories(allCategories);
       } catch (error) {
@@ -67,16 +66,19 @@ const Products = () => {
         </span>
         <div className={cardStyles.cardContainer}>
           {filteredProducts.map((item) => (
-            <Link key={item.id_product} to={`/details/${item.id_product}`}>
-              <div className={cardStyles.card}>
-                <img src={item.mainimg} className={cardStyles.img} alt={item.title}/> 
-                <div className={cardStyles.content}>
-                  <h1>{item.title}</h1>
-                  <p>{item.description}</p> 
-                  <span>R${item.currentprice.toFixed(2)}</span> 
-                </div>
+            <div key={item.id_product} className={cardStyles.card}>
+              <img src={item.mainimg} className={cardStyles.img} alt={item.title}/> 
+              <div className={cardStyles.content}>
+                <h1>{item.title}</h1>
+                <p>{item.description}</p> 
+                <span>R${item.currentprice.toFixed(2)}</span> 
+                <AddToCart
+                  name={item.title}
+                  price={item.currentprice}
+                  thumbnail={item.thumbnail} 
+                />
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>
