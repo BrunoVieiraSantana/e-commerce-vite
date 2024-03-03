@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styles from "../page.module.css";
 import cardStyles from './card.module.css';
 import utils from "../components/utils.module.css";
-import AddToCart from "../components/addToCart";
 import { Link, useLocation } from "react-router-dom";
 
 const Products = () => {
@@ -66,19 +65,16 @@ const Products = () => {
         </span>
         <div className={cardStyles.cardContainer}>
           {filteredProducts.map((item) => (
-            <div key={item.id_product} className={cardStyles.card}>
-              <img src={item.mainimg} className={cardStyles.img} alt={item.title}/> 
-              <div className={cardStyles.content}>
-                <h1>{item.title}</h1>
-                <p>{item.description}</p> 
-                <span>R${item.currentprice.toFixed(2)}</span> 
-                <AddToCart
-                  name={item.title}
-                  price={item.currentprice}
-                  thumbnail={item.thumbnail} 
-                />
+            <Link key={item.id_product} to={`/details/${item.id_product}`} className={cardStyles.link}>
+              <div className={cardStyles.card}>
+                <img src={item.mainimg} className={cardStyles.img} alt={item.title}/> 
+                <div className={cardStyles.content}>
+                  <h1>{item.title}</h1>
+                  <p>{item.description}</p> 
+                  <span>R${item.currentprice.toFixed(2)}</span> 
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
