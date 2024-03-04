@@ -1,5 +1,3 @@
-// details.jsx
-
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { CartContext } from "../components/cartProvider";

@@ -1,5 +1,3 @@
-// addToCartD.jsx
-
 import styles from "./addToCart.module.css";
 import cardStyles from '../pages/card.module.css';
 import utils from "./utils.module.css";
