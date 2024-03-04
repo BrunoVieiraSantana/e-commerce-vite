@@ -1,3 +1,5 @@
+// addToCartD.jsx
+
 import styles from "./addToCart.module.css";
 import cardStyles from '../pages/card.module.css';
 import utils from "./utils.module.css";
@@ -22,6 +24,11 @@ export default function AddToCart({ name, price, thumbnail }) {
   };
 
   const onAddToCart = () => {
+    if (!document.cookie.includes('token')) { // Verifica se o cookie de token está presente
+      alert('Você precisa estar logado para comprar.'); // Exibe um alerta se o usuário não estiver logado
+      return; // Retorna sem adicionar ao carrinho se o usuário não estiver logado
+    }
+
     if (count) {
       const newCartItem = {
         name: name,
