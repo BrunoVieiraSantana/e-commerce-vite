@@ -1,29 +1,16 @@
+// details.jsx
+
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
 import { CartContext } from "../components/cartProvider";
 import AddToCartD from "../components/addToCartD";
-
 
 const Details = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [qtdItens, setqtdItens] = useState(1);
-
-  const handleQtdItens = (action) => {
-    if (action === "+" && qtdItens < product.stock) {
-      setqtdItens(qtdItens + 1);
-    }
-    if (action === "-" && qtdItens > 1) {
-      setqtdItens(qtdItens - 1);
-    }
-  };
-
-  const addToCart = () => {
-    console.log(`Adicionar ${qtdItens} unidades de ${product.title} ao carrinho`);
-  };
+  const contextValue = useContext(CartContext);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -49,6 +36,11 @@ const Details = () => {
 
     fetchProduct();
   }, [productId]);
+
+  useEffect(() => {
+    const cartItemsFromStorage = JSON.parse(localStorage.getItem('cartItems')) || [];
+    contextValue.setCartItems(cartItemsFromStorage);
+  }, []);
 
   return (
     <div>

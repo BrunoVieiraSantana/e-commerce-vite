@@ -22,10 +22,13 @@ const SignIn = () => {
       if (response.ok) {
         const data = await response.json();
         
+        // Save token in cookie
         document.cookie = `token=${data.token}; path=/`;
 
+        // Save user data in local storage
         localStorage.setItem('userEmail', formData.email);
         localStorage.setItem('userName', data.name);
+        localStorage.setItem('userId', data.id); // Save user ID
 
         alert('Usuário logado com sucesso');
         
