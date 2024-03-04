@@ -1,5 +1,3 @@
-// addToCartD.jsx
-
 import styles from "./addToCart.module.css";
 import cardStyles from '../pages/card.module.css';
 import utils from "./utils.module.css";
@@ -11,7 +9,7 @@ const storeCartItemsToLocal = (cartItems) => {
   localStorage.setItem('cartItems', JSON.stringify(cartItems));
 };
 
-export default function AddToCart({ name, price, thumbnail }) {
+export default function AddToCart({ name, price, thumbnail, product_id }) {
   const contextValue = useContext(CartContext);
   const [count, setCount] = useState(0);
 
@@ -24,10 +22,10 @@ export default function AddToCart({ name, price, thumbnail }) {
   };
 
   const onAddToCart = () => {
-    if (!document.cookie.includes('token')) { // Verifica se o cookie de token está presente
-      alert('Você precisa estar logado para comprar.'); // Exibe um alerta se o usuário não estiver logado
-      window.location.href = '/signin'; // Redireciona para a página de login
-      return; // Retorna sem adicionar ao carrinho se o usuário não estiver logado
+    if (!document.cookie.includes('token')) { 
+      alert('Você precisa estar logado para comprar.'); 
+      window.location.href = '/signin'; 
+      return; 
     }
 
     if (count) {
@@ -37,10 +35,12 @@ export default function AddToCart({ name, price, thumbnail }) {
         qty: count,
         subTotal: price * count,
         thumbnail: thumbnail,
+        id: product_id 
       };
 
-      contextValue.setCartItems((prev) => [...prev, newCartItem]);
-      storeCartItemsToLocal([...contextValue.cartItems, newCartItem]);
+      const updatedCartItems = [...contextValue.cartItems, newCartItem];
+      contextValue.setCartItems(updatedCartItems);
+      storeCartItemsToLocal(updatedCartItems); 
     } else {
       alert("Por favor, adicione pelo menos 1 item.");
     }

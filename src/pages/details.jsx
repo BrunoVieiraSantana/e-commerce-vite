@@ -68,6 +68,7 @@ const Details = () => {
                         name={product.title}
                         price={product.currentprice}
                         thumbnail={product.thumbnail} 
+                        product_id={productId}
                       />
               </section>
             </div>
