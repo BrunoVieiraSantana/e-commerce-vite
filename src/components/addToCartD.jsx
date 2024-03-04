@@ -26,6 +26,7 @@ export default function AddToCart({ name, price, thumbnail }) {
   const onAddToCart = () => {
     if (!document.cookie.includes('token')) { // Verifica se o cookie de token está presente
       alert('Você precisa estar logado para comprar.'); // Exibe um alerta se o usuário não estiver logado
+      window.location.href = '/signin'; // Redireciona para a página de login
       return; // Retorna sem adicionar ao carrinho se o usuário não estiver logado
     }
 
