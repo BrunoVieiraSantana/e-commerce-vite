@@ -33,21 +33,26 @@ export default function Cart() {
       const userId = localStorage.getItem('userId');
       console.log("User ID:", userId);
       console.log("Cart items:", cartItems);
-      const response = await fetch('https://e-commerce-api-bay.vercel.app/api/v1/purchases', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ user_id: userId, cartItems })
-      });
 
-      if (response.ok) {
-        setCartItems([]);
-        alert('Compra realizada com sucesso!');
-      } else {
-        console.error('Erro ao realizar compra:', response.status);
-        alert('Erro ao realizar compra. Por favor, tente novamente mais tarde.');
+      for (const item of cartItems) {
+        console.log("Sending item to backend:", item);
+        const response = await fetch('https://e-commerce-api-bay.vercel.app/api/v1/purchases', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ user_id: userId, ...item })
+        });
+
+        if (!response.ok) {
+          console.error('Erro ao realizar compra:', response.status);
+          alert('Erro ao realizar compra. Por favor, tente novamente mais tarde.');
+          return;
+        }
       }
+
+      setCartItems([]);
+      alert('Compra realizada com sucesso!');
     } catch (error) {
       console.error('Erro ao realizar compra:', error);
       alert('Erro ao realizar compra. Por favor, tente novamente mais tarde.');
