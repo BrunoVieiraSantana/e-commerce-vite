@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useNavigate } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./nav.module.css";
 import utils from "./utils.module.css";
@@ -14,7 +14,6 @@ export default function Header() {
   const [checkedAuth, setCheckedAuth] = useState(false);
   const location = useLocation();
   const navMenuRef = useRef(null);
-  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsNavMenuOpened((prevValue) => !prevValue);
@@ -53,7 +52,8 @@ export default function Header() {
     localStorage.removeItem("userId");
 
     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    navigate('/');
+
+    window.location.href = "/";
   };
 
   const isSignInOrSignUpRoute = location.pathname === "/signin" || location.pathname === "/signup";
@@ -63,7 +63,7 @@ export default function Header() {
   }
 
   if (!user && location.pathname === "/myorders") {
-    navigate('/signin');
+    window.location.href = "/signin";
     return null;
   }
 

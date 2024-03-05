@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import styles from "../page.module.css";
 import cardStyles from './card.module.css';
 import utils from "../components/utils.module.css";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import { Link, useLocation } from "react-router-dom";
 
 const Products = () => {
-  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -72,7 +70,7 @@ const Products = () => {
                 <img src={item.mainimg} className={cardStyles.img} alt={item.title}/> 
                 <div className={cardStyles.content}>
                   <h1>{item.title}</h1>
-                  {/* <p>{item.description}</p>  */}
+                  <p>{item.description}</p> 
                   <span>R${item.currentprice}</span> 
                 </div>
               </div>

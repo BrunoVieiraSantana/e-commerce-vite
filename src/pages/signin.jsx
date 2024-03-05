@@ -1,8 +1,7 @@
-import React, { useState, useNavigate } from 'react';
+import React, { useState } from 'react';
 import styles from './sign.module.css';
 
 const SignIn = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -30,7 +29,8 @@ const SignIn = () => {
         localStorage.setItem('userId', data.id); 
 
         alert('Usuário logado com sucesso');
-        navigate('/');
+        
+        window.location.href = "/";
       } else {
         setError('Credenciais inválidas. Verifique seu email e senha.');
       }
