@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from "./nav.module.css";
 import utils from "./utils.module.css";
 import Cart from "./cart";
@@ -8,6 +8,7 @@ import { CiLogout } from "react-icons/ci";
 import { IoMenu } from "react-icons/io5";
 
 export default function Header() {
+  const navigate = useNavigate();
   const [isNavMenuOpened, setIsNavMenuOpened] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [user, setUser] = useState(null);
@@ -53,7 +54,7 @@ export default function Header() {
 
     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
-    window.location.href = "/";
+    navigate('/');
   };
 
   const isSignInOrSignUpRoute = location.pathname === "/signin" || location.pathname === "/signup";
