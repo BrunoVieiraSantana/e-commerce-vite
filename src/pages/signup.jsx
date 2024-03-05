@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './sign.module.css';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -62,10 +63,10 @@ const SignUp = () => {
         <button type="submit" className={styles.btn}>
           Cadastrar
         </button>
-        <a href="/signin" className={styles.link}>
+        <Link to="/signin" className={styles.link}>
           Já possui cadastro?
           <span className={styles.link2}>Clique Aqui</span>
-        </a>
+        </Link>
       </form>
     </main>
     <a href="/">

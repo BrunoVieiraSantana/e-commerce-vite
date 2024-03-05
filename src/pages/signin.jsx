@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './sign.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const SignIn = () => {
   const [formData, setFormData] = useState({
@@ -75,9 +75,9 @@ const SignIn = () => {
             Fazer Login
           </button>
           {error && <p className="text-red-500">{error}</p>}
-          <a href="/signup" className={styles.link}>
+          <Link to="/signup" className={styles.link}>
             Não possui cadastro?<span className={styles.link2}>Clique Aqui</span>
-          </a>
+          </Link>
         </form>
 
       </main>
