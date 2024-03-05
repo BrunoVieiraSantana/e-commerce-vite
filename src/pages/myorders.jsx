@@ -82,7 +82,7 @@ const MyOrders = () => {
                 </section>    
                 :
                 <section className=" ">
-                    <h1>Nome: {userName}</h1>
+                    <h1>Nome1: {userName}</h1>
                     <h1>E-mail: {userEmail}</h1>
                 </section>}
         </div>                 
