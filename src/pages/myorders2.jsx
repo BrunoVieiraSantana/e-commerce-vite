@@ -7,8 +7,6 @@ import 'tailwindcss/tailwind.css';
 
 const MyOrders = () => {
   const { cartItems, setCartItems } = useContext(CartContext); 
-  console.log(cartItems)
-
 
   const userEmail = localStorage.getItem("userEmail");
   const userName = localStorage.getItem("userName");

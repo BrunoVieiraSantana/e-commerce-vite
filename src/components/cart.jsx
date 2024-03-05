@@ -11,13 +11,13 @@ export default function Cart() {
 
   useEffect(() => {
     const calculateTotalValue = () => {
-      console.log("Calculating total value...");
+
       let total = 0;
       cartItems.forEach((item) => {
-        console.log("Item:", item);
+
         total += item.subTotal;
       });
-      console.log("Total value:", total);
+
       setTotalValue(total);
     };
 
@@ -31,11 +31,10 @@ export default function Cart() {
   const handleCheckout = async () => {
     try {
       const userId = localStorage.getItem('userId');
-      console.log("User ID:", userId);
-      console.log("Cart items:", cartItems);
+
 
       for (const item of cartItems) {
-        console.log("Sending item to backend:", item);
+
         const response = await fetch('https://e-commerce-api-bay.vercel.app/api/v1/purchases', {
           method: 'POST',
           headers: {
