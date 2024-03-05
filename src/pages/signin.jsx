@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './sign.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,8 @@ const SignIn = () => {
   });
 
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +33,7 @@ const SignIn = () => {
 
         alert('Usuário logado com sucesso');
         
-        window.location.href = "/";
+        navigate('/');
       } else {
         setError('Credenciais inválidas. Verifique seu email e senha.');
       }
