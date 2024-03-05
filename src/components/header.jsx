@@ -64,7 +64,7 @@ export default function Header() {
   }
 
   if (!user && location.pathname === "/myorders") {
-    window.location.href = "/signin";
+    navigate('/signin');
     return null;
   }
 
