@@ -75,7 +75,7 @@ export default function Cart() {
               <>
                 <CartList items={cartItems} setCartItems={setCartItems} />
                 <hr style={{marginTop: '20px', marginBottom: '20px'}}></hr>
-                <div className={`${utils.fw700} ${utils.textNeutral700}`}>Valor total: R${totalValue.toFixed(2)}</div>
+                <div className={`${utils.fw700} ${utils.textNeutral700}`}>Valor total: R${totalValue}</div>
                 <button
                   className={`${styles.btnCheckout} ${utils.fw700} ${utils.textNeutral100}`}
                   onClick={handleCheckout}
@@ -124,10 +124,10 @@ const CartItem = ({ item, id, removeItem }) => {
       <div className={`${styles.cartItemDesc} ${utils.flex}`}>
         <span>{item.name}</span>
         <span>
-          <span>{"R$" + item.price.toFixed(2)}</span>
+          <span>{"R$" + item.price}</span>
           <span>{" x " + item.qty + " "}</span>
           <span className={`${utils.fw700} ${utils.textNeutral700}`}>
-            {"R$" + item.subTotal.toFixed(2)}
+            {"R$" + item.subTotal}
           </span>
         </span>
       </div>

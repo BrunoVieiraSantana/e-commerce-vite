@@ -61,7 +61,7 @@ const Details = () => {
 
                 <article className="flex flex-col  gap-7 my-10">
                   <h3 className="font-semibold text-[#1E3A8A] text-4xl">{product.title}</h3>
-                  <p className=" text-black text-2xl">R${product.currentprice ? product.currentprice.toFixed(2) : 'N/A'}</p>
+                  <p className=" text-black text-2xl">R${product.currentprice ? product.currentprice : 'N/A'}</p>
                   <p className="w-[224px] md:w-[514px] text-wrap ">{product.description}</p>
                 </article>
                   <AddToCartD

@@ -50,7 +50,7 @@ export default function Home() {
                   <div className={cardStyles.content}>
                     <h1>{item.title}</h1>
                     <p>{item.description}</p> 
-                    <span>R${item.currentprice.toFixed(2)}</span> 
+                    <span>R${item.currentprice}</span> 
                     {/* <AddToCart
                       name={item.title}
                       price={item.currentprice}

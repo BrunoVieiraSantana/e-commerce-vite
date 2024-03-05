@@ -28,7 +28,7 @@ const MyOrders = () => {
     cartItems.forEach(item => {
       total += item.price * item.qty;
     });
-    return total.toFixed(2);
+    return total;
   };
 
   const handleCheckout = () => {
@@ -69,7 +69,7 @@ const MyOrders = () => {
                                     <ul>
                                       {cartItems.map((item, index) => (
                                         <li key={index}>
-                                          <img src={item.thumbnail}/> {item.name} - Quantidade: {item.qty} - Preço: R${item.price.toFixed(2)}
+                                          <img src={item.thumbnail}/> {item.name} - Quantidade: {item.qty} - Preço: R${item.price}
                                         </li>
                                       ))}
                                     </ul>

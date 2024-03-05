@@ -70,7 +70,7 @@ const MyOrders = () => {
                         <ul>
                           {purchases.map((purchase, index) => (
                             <li key={index}>
-                               {purchase.product_title} - Quantidade: {purchase.quantity} - Preço: R${purchase.purchase_price.toFixed(2)} - {purchase.status}
+                               {purchase.product_title} - Quantidade: {purchase.quantity} - Preço: R${purchase.purchase_price} - {purchase.status}
                             </li>
                           ))}
                         </ul>

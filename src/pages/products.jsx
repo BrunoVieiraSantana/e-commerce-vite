@@ -71,7 +71,7 @@ const Products = () => {
                 <div className={cardStyles.content}>
                   <h1>{item.title}</h1>
                   <p>{item.description}</p> 
-                  <span>R${item.currentprice.toFixed(2)}</span> 
+                  <span>R${item.currentprice}</span> 
                 </div>
               </div>
             </Link>
