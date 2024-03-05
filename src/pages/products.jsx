@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import styles from "../page.module.css";
 import cardStyles from './card.module.css';
 import utils from "../components/utils.module.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
 
 const Products = () => {
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [categories, setCategories] = useState([]);

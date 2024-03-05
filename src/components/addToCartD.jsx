@@ -4,12 +4,14 @@ import utils from "./utils.module.css";
 import { useState, useContext } from "react";
 import { CartContext } from "./cartProvider";
 import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
+import { useNavigate } from 'react-router-dom';
 
 const storeCartItemsToLocal = (cartItems) => {
   localStorage.setItem('cartItems', JSON.stringify(cartItems));
 };
 
 export default function AddToCart({ name, price, thumbnail, product_id }) {
+  const navigate = useNavigate();
   const contextValue = useContext(CartContext);
   const [count, setCount] = useState(0);
 
@@ -24,7 +26,7 @@ export default function AddToCart({ name, price, thumbnail, product_id }) {
   const onAddToCart = () => {
     if (!document.cookie.includes('token')) { 
       alert('Você precisa estar logado para comprar.'); 
-      window.location.href = '/signin'; 
+      navigate('/signin');
       return; 
     }
 
