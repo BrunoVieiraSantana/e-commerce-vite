@@ -28,6 +28,24 @@ export default function Header() {
     }
   };
 
+  const handleUserChange = () => {
+    const userName = localStorage.getItem("userName");
+    setUser({ name: userName });
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("userEmail");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("cartItems");
+    localStorage.removeItem("userId");
+
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+    setUser(null); // Limpar o usuário ao fazer logout
+
+    navigate('/');
+  };
+
   useEffect(() => {
     const token = document.cookie.split("; ").find((row) => row.startsWith("token="));
     const userEmail = localStorage.getItem("userEmail");
@@ -41,21 +59,13 @@ export default function Header() {
 
     document.addEventListener("mousedown", handleClickOutside);
 
+    window.addEventListener("storage", handleUserChange);
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("storage", handleUserChange);
     };
   }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("userEmail");
-    localStorage.removeItem("userName");
-    localStorage.removeItem("cartItems");
-    localStorage.removeItem("userId");
-
-    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-
-    navigate('/');
-  };
 
   const isSignInOrSignUpRoute = location.pathname === "/signin" || location.pathname === "/signup";
 

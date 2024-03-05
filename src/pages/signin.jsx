@@ -28,7 +28,7 @@ const SignIn = () => {
         document.cookie = `token=${data.token}; path=/`;
 
         localStorage.setItem('userEmail', formData.email);
-        localStorage.setItem('userName', data.name);
+        localStorage.setItem('userName', data.name); 
         localStorage.setItem('userId', data.id); 
 
         alert('Usuário logado com sucesso');
