@@ -25,12 +25,10 @@ const MyOrders = () => {
     fetchPurchases();
   }, [userId]);
 
-  // Objeto para armazenar as compras agrupadas pela data
   const groupedPurchases = {};
 
-  // Classificar as compras por data
   purchases.forEach(purchase => {
-    const dateKey = purchase.purchase_date_formatted.split(' ')[0]; // Extrair apenas a parte da data
+    const dateKey = purchase.purchase_date_formatted.split(' ')[0]; 
     if (!groupedPurchases[dateKey]) {
       groupedPurchases[dateKey] = [];
     }
