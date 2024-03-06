@@ -41,7 +41,7 @@ export default function Header() {
 
     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
-    setUser(null); // Limpar o usuário ao fazer logout
+    setUser(null); 
 
     navigate('/');
   };
