@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from "../page.module.css";
 import cardStyles from './card.module.css';
 import utils from "../components/utils.module.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -10,6 +10,7 @@ const Products = () => {
   const [categories, setCategories] = useState([]);
   const { search } = useLocation();
   const categoryId = new URLSearchParams(search).get('category');
+
 
   useEffect(() => {
     async function fetchProductsAndCategories() {
@@ -47,17 +48,19 @@ const Products = () => {
 
   return (
     <div className={utils.flex}>
+      <div className='m-16'>
       <div className={styles.filter}>
-        <h2>Filtrar por Categoria</h2>
+        <h2  className={`${styles.companyName} ${utils.upperCase} ${utils.textOrange400} ${utils.fs300} ${utils.fw700}`}>Filtrar por Categoria</h2>
         <ul>
           {categories.map(category => (
-            <li key={category.id_category}>
+            <li className={`p-2 ps-6 relative before:block  before:border-black before:border before:w-3 before:h-3 before:absolute before:left-1 before:rounded-full before:bottom-3 cursor-pointer hover:bg-slate-200 list-none rounded-sm`} key={category.id_category}>
               <Link to={`/products?category=${category.id_category}`} className={categoryId === category.id_category ? styles.active : ''}>
                 {category.category_name}
               </Link>
             </li>
           ))}
         </ul>
+      </div>
       </div>
       <div className={styles.productDetail}>
         <span className={`${styles.companyName} ${utils.upperCase} ${utils.textOrange400} ${utils.fs300} ${utils.fw700}`}>
