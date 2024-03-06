@@ -39,7 +39,7 @@ const SignIn = () => {
         
         setTimeout(() => {
           window.location.href = "/";
-        }, 3000); 
+        }, 5000); 
 
       } else {
         setError('Credenciais inválidas. Verifique seu email e senha.');

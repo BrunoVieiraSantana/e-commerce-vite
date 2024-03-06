@@ -27,7 +27,7 @@ const SignUp = () => {
 
       setTimeout(() => {
         window.location.href = "/";
-      }, 3000); 
+      }, 5000); 
 
     } catch (error) {
       console.error('Error registering user:', error);

@@ -29,7 +29,7 @@ export default function AddToCart({ name, price, thumbnail, product_id }) {
       notifyWarning('Você precisa estar logado para comprar');
       setTimeout(() => {
         navigate('/signin');
-      }, 3000); 
+      }, 5000); 
       
       return; 
     }
