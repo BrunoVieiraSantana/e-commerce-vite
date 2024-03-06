@@ -51,6 +51,7 @@ export default function Cart() {
       }
 
       setCartItems([]);
+      localStorage.removeItem('cartItems');
       alert('Compra realizada com sucesso!');
     } catch (error) {
       console.error('Erro ao realizar compra:', error);
