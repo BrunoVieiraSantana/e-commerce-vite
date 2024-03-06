@@ -4,8 +4,8 @@ import 'tailwindcss/tailwind.css';
 const MyOrders = () => {
   const [purchases, setPurchases] = useState([]);
   const userId = localStorage.getItem("userId");
-  const userEmail = localStorage.getItem("userEmail");
-  const userName = localStorage.getItem("userName");
+  const userName = localStorage.getItem('userName');
+  const userEmail = localStorage.getItem('userEmail');
 
   useEffect(() => {
     const fetchPurchases = async () => {
@@ -64,27 +64,20 @@ const MyOrders = () => {
                         <h2 className="text-black md:text-stone-500 text-base font-semibold ">Meus Pedidos</h2>
                         <span className="flex">
                             <p className="hidden md:flex">Status</p>
+                            <p className="hidden md:flex">Meus Pedidos</p>
                         </span>
                     </div>
-
-                    <div>
-                      {purchases.map((purchase, index) => (
-                        <div className="my-5 flex flex-col gap-5" key={index}> 
-                          <div className="flex justify-between">
-                            <h2 className="text-black md:text-stone-500 text-base font-semibold">{purchase.purchase_date_formatted}</h2>
-                            <span className="flex">
-                              <p className="hidden md:flex">{purchase.status}</p>
-                            </span>
-                          </div>
-                          {purchase.product_title}
-                          <br/>
-                          R${purchase.purchase_price}
-                          <br/>
-                          Quantidade:{purchase.quantity}
-                        </div>
-                      ))}
-                    </div>
-               
+                    <div className=" my-5 flex flex-col gap-5">   
+                      <div>
+                        <ul>
+                          {purchases.map((purchase, index) => (
+                            <li key={index}>
+                               {purchase.product_title} - Quantidade: {purchase.quantity} - Preço: R${purchase.purchase_price} - {purchase.status}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>              
                                     
                 </section>    
                 :
@@ -95,7 +88,17 @@ const MyOrders = () => {
         </div>                 
         
     </div>
-
+      <div className="flex flex-col bg-gray-200 p-8 rounded-lg">
+        <h2 className="text-lg font-semibold mb-4">Minhas Compras</h2>
+        {purchases.map((purchase, index) => (
+          <div key={index} className="mb-4">
+            <h3 className="text-gray-700 font-semibold">{purchase.purchase_date_formatted}</h3>
+            <ul>
+              <li>{purchase.product_title} - Preço: R${purchase.purchase_price} - Quantidade: {purchase.quantity} - Status: {purchase.status}</li>
+            </ul>
+          </div>
+        ))}
+      </div>
     </main>
   );
 };

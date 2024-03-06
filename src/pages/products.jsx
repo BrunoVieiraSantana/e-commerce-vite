@@ -70,7 +70,6 @@ const Products = () => {
                 <img src={item.mainimg} className={cardStyles.img} alt={item.title}/> 
                 <div className={cardStyles.content}>
                   <h1>{item.title}</h1>
-                  <p>{item.description}</p> 
                   <span>R${item.currentprice}</span> 
                 </div>
               </div>
