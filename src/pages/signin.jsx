@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styles from './sign.module.css';
 import { useNavigate, Link } from 'react-router-dom';
+import { NotifyContainer, notifySuccess } from "../components/notify";
+
 
 const SignIn = () => {
   const [formData, setFormData] = useState({
@@ -9,12 +11,14 @@ const SignIn = () => {
   });
 
   const [error, setError] = useState(null);
+  const [isLoggingIn, setIsLoggingIn] = useState(false); 
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsLoggingIn(true); 
       const response = await fetch('https://e-commerce-api-bay.vercel.app/api/v1/users/authenticate', {
         method: 'POST',
         headers: {
@@ -31,15 +35,20 @@ const SignIn = () => {
         localStorage.setItem('userName', data.name); 
         localStorage.setItem('userId', data.id); 
 
-        alert('Usuário logado com sucesso');
+        notifySuccess('Usuário logado com sucesso');
         
-        window.location.href = "/";
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 3000); 
+
       } else {
         setError('Credenciais inválidas. Verifique seu email e senha.');
+        setIsLoggingIn(false); 
       }
     } catch (error) {
       console.error('Error logging in:', error);
       setError('Ocorreu um erro ao fazer login. Por favor, tente novamente mais tarde.');
+      setIsLoggingIn(false); 
     }
   };
 
@@ -71,8 +80,8 @@ const SignIn = () => {
               <input name="password" value={formData.password} onChange={handleChange} placeholder="Digite sua senha" required type="password" className={styles['form-input']} />
             </label>
           </div>
-          <button className={styles.btn} type="submit">
-            Fazer Login
+          <button className={styles.btn} type="submit" disabled={isLoggingIn}> 
+            {isLoggingIn ? 'Entrando...' : 'Fazer Login'} 
           </button>
           {error && <p className="text-red-500">{error}</p>}
           <Link to="/signup" className={styles.link}>
@@ -88,6 +97,7 @@ const SignIn = () => {
         <img className="w-[620px]" src="/images/logolarge.png" alt="LogoLarge" />
       </div>
     </a>
+    <NotifyContainer />
     </div>
   );
 };

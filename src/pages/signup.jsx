@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './sign.module.css';
 import { Link } from 'react-router-dom';
+import { NotifyContainer, notifySuccess } from "../components/notify";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +23,12 @@ const SignUp = () => {
       if (!response.ok) {
         throw new Error('Failed to register user');
       }
-      alert('Usuário cadastrado com sucesso');
+      notifySuccess('Usuário cadastrado com sucesso');
+
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 3000); 
+
     } catch (error) {
       console.error('Error registering user:', error);
     }
@@ -74,6 +80,7 @@ const SignUp = () => {
       <img className="w-[620px]" src="/images/logolarge.png" alt="LogoLarge" />
     </div>
     </a>
+    <NotifyContainer />
     </div>
   );
 };

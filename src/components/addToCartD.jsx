@@ -5,6 +5,7 @@ import { useState, useContext } from "react";
 import { CartContext } from "./cartProvider";
 import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import { NotifyContainer, notifySuccess, notifyWarning } from "../components/notify";
 
 const storeCartItemsToLocal = (cartItems) => {
   localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -25,8 +26,11 @@ export default function AddToCart({ name, price, thumbnail, product_id }) {
 
   const onAddToCart = () => {
     if (!document.cookie.includes('token')) { 
-      alert('Você precisa estar logado para comprar.'); 
-      navigate('/signin');
+      notifyWarning('Você precisa estar logado para comprar');
+      setTimeout(() => {
+        navigate('/signin');
+      }, 3000); 
+      
       return; 
     }
 
@@ -44,7 +48,7 @@ export default function AddToCart({ name, price, thumbnail, product_id }) {
       contextValue.setCartItems(updatedCartItems);
       storeCartItemsToLocal(updatedCartItems); 
     } else {
-      alert("Por favor, adicione pelo menos 1 item.");
+      notifyWarning('Por favor, adicione pelo menos 1 item');
     }
   };
 
@@ -63,6 +67,7 @@ export default function AddToCart({ name, price, thumbnail, product_id }) {
         </span>
         <button className="bg-[#1E3A8A] text-white w-[222px] md:w-[352px] h-14 md:h-20 rounded-lg font-semibold text-2xl" onClick={onAddToCart}>Comprar</button> 
       </article>
+      <NotifyContainer />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'tailwindcss/tailwind.css';
+import { NotifyContainer, notifySuccess } from "../components/notify";
 
 const MyOrders = () => {
   const [purchases, setPurchases] = useState([]);
@@ -51,7 +52,7 @@ const MyOrders = () => {
   };
 
   const handleCheckout = () => {
-    alert("Compra finalizada!");
+    notifySuccess('Compra finalizada!');
     setCartItems([]);
   };
 
@@ -103,7 +104,7 @@ const MyOrders = () => {
         </div>                 
         
       </div>
-
+      <NotifyContainer />
     </main>
   );
 };

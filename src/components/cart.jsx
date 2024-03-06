@@ -2,6 +2,7 @@ import styles from "./cart.module.css";
 import utils from "./utils.module.css";
 import { CartContext } from "./cartProvider";
 import { useContext, useState, useEffect } from "react";
+import { NotifyContainer, notifySuccess } from "../components/notify";
 
 export default function Cart() {
   const contextValue = useContext(CartContext);
@@ -52,9 +53,11 @@ export default function Cart() {
 
       setCartItems([]);
       localStorage.removeItem('cartItems');
-      alert('Compra realizada com sucesso!');
+      notifySuccess('Compra realizada com sucesso!');
+   
     } catch (error) {
       console.error('Erro ao realizar compra:', error);
+      
       alert('Erro ao realizar compra. Por favor, tente novamente mais tarde.');
     }
   };
@@ -89,6 +92,7 @@ export default function Cart() {
           </div>
         </div>
       ) : null}
+      <NotifyContainer />
     </>
   );
 }
