@@ -33,7 +33,7 @@ const SignIn = () => {
 
         alert('Usuário logado com sucesso');
         
-        navigate('/');
+        window.location.href = "/";
       } else {
         setError('Credenciais inválidas. Verifique seu email e senha.');
       }
