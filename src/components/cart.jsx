@@ -2,12 +2,16 @@ import styles from "./cart.module.css";
 import utils from "./utils.module.css";
 import { CartContext } from "./cartProvider";
 import { useContext, useState, useEffect } from "react";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 export default function Cart() {
   const contextValue = useContext(CartContext);
   const { cartItems, setCartItems } = contextValue;
   const [isCartOpened, setIsCartOpened] = useState(false);
   const [totalValue, setTotalValue] = useState(0);
+
+  const MySwal = withReactContent(Swal)
 
   useEffect(() => {
     const calculateTotalValue = () => {
@@ -52,7 +56,11 @@ export default function Cart() {
 
       setCartItems([]);
       localStorage.removeItem('cartItems');
-      alert('Compra realizada com sucesso!');
+      MySwal.fire({
+        title: "Compra realizada com sucesso!",
+        icon: "success"
+      })
+      // alert('Compra realizada com sucesso!');
     } catch (error) {
       console.error('Erro ao realizar compra:', error);
       alert('Erro ao realizar compra. Por favor, tente novamente mais tarde.');
