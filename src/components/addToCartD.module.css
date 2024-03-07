@@ -1,0 +1,48 @@
+.productPurchase {
+  margin-top: 0;
+}
+
+.productCounter {
+  width: 80px; 
+  height: 20px;
+  
+  background-color: hsl(var(--clr-neutral-200));
+  border-radius: 8px;
+  
+}
+
+
+.productCounter > .btnIncrease,
+.productCounter > .btnDecrease {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  color: hsl(var(--clr-orange-400));
+  cursor: pointer;
+}
+
+.btnIncrease > img{
+  width: 12px; 
+  height: 12px;
+  transition: all 200ms ease-in-out;
+}
+.btnDecrease > img {
+  width: 12px; 
+  height: 6px; 
+  transition: all 200ms ease-in-out;
+}
+
+
+.btnIncrease:hover > img,
+.btnDecrease:hover > img {
+  opacity: 0.65;
+}
+
+.productCounter > .productCount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
