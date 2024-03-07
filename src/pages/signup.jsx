@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styles from './sign.module.css';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +10,8 @@ const SignUp = () => {
     email: '',
     password: ''
   });
+
+  const MySwal = withReactContent(Swal)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,7 +26,15 @@ const SignUp = () => {
       if (!response.ok) {
         throw new Error('Failed to register user');
       }
-      alert('Usuário cadastrado com sucesso');
+      // alert('Usuário cadastrado com sucesso');
+      MySwal.fire({
+        title: "Usuário cadastrado com sucesso",
+        icon: "success"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = "/"
+        }
+      });
     } catch (error) {
       console.error('Error registering user:', error);
     }

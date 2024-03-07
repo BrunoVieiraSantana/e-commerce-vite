@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import 'tailwindcss/tailwind.css';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const MyOrders = () => {
   const [purchases, setPurchases] = useState([]);
@@ -7,6 +9,8 @@ const MyOrders = () => {
   const userId = localStorage.getItem("userId");
   const userEmail = localStorage.getItem("userEmail");
   const userName = localStorage.getItem("userName");
+
+  const MySwal = withReactContent(Swal)
 
   useEffect(() => {
     const fetchPurchases = async () => {
@@ -51,7 +55,15 @@ const MyOrders = () => {
   };
 
   const handleCheckout = () => {
-    alert("Compra finalizada!");
+    MySwal.fire({
+      title: "Compra finalizada!",
+      icon: "success"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "/"
+      }
+    });
+    // alert("Compra finalizada!");
     setCartItems([]);
   };
 
