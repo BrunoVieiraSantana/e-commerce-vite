@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styles from './sign.module.css';
 import { useNavigate, Link } from 'react-router-dom';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const SignIn = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +11,8 @@ const SignIn = () => {
   });
 
   const [error, setError] = useState(null);
+
+  const MySwal = withReactContent(Swal)
 
   const navigate = useNavigate();
 
@@ -31,9 +35,18 @@ const SignIn = () => {
         localStorage.setItem('userName', data.name); 
         localStorage.setItem('userId', data.id); 
 
-        alert('Usuário logado com sucesso');
+        // alert('Usuário logado com sucesso');
         
-        window.location.href = "/";
+        MySwal.fire({
+          title: "Usuário logado com sucesso",
+          icon: "success"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = "/"
+          }
+        });
+        
+        // window.location.href = "/";
       } else {
         setError('Credenciais inválidas. Verifique seu email e senha.');
       }
