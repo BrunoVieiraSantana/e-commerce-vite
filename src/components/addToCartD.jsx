@@ -5,6 +5,8 @@ import { useState, useContext } from "react";
 import { CartContext } from "./cartProvider";
 import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const storeCartItemsToLocal = (cartItems) => {
   localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -14,6 +16,8 @@ export default function AddToCart({ name, price, thumbnail, product_id }) {
   const contextValue = useContext(CartContext);
   const [count, setCount] = useState(0);
   const navigate = useNavigate();
+
+  const MySwal = withReactContent(Swal)
 
   const onDecrease = () => {
     count && setCount(count - 1);
@@ -25,8 +29,17 @@ export default function AddToCart({ name, price, thumbnail, product_id }) {
 
   const onAddToCart = () => {
     if (!document.cookie.includes('token')) { 
-      alert('Você precisa estar logado para comprar.'); 
-      navigate('/signin');
+      MySwal.fire({
+        title: "Você precisa estar logado para comprar.",
+        icon: "info"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/signin')
+        }
+      });
+
+      // alert('Você precisa estar logado para comprar.'); 
+      // navigate('/signin');
       return; 
     }
 
