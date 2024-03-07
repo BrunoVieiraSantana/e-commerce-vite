@@ -43,6 +43,7 @@ export default function AddToCart({ name, price, thumbnail, product_id }) {
       const updatedCartItems = [...contextValue.cartItems, newCartItem];
       contextValue.setCartItems(updatedCartItems);
       storeCartItemsToLocal(updatedCartItems); 
+      alert('Item adicionado ao carrinho com sucesso!');
     } else {
       alert("Por favor, adicione pelo menos 1 item.");
     }
