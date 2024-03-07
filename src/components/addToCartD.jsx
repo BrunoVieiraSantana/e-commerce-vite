@@ -56,9 +56,18 @@ export default function AddToCart({ name, price, thumbnail, product_id }) {
       const updatedCartItems = [...contextValue.cartItems, newCartItem];
       contextValue.setCartItems(updatedCartItems);
       storeCartItemsToLocal(updatedCartItems); 
-      alert('Item adicionado ao carrinho com sucesso!');
+
+      MySwal.fire({
+        title: "Item adicionado ao carrinho com sucesso!",
+        icon: "success"
+      })
+      // alert('Item adicionado ao carrinho com sucesso!');
     } else {
-      alert("Por favor, adicione pelo menos 1 item.");
+      MySwal.fire({
+        title: "Por favor, adicione pelo menos 1 item.",
+        icon: "info"
+      })
+      // alert("Por favor, adicione pelo menos 1 item.");
     }
   };
 
