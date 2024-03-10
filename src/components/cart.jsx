@@ -15,13 +15,10 @@ export default function Cart() {
 
   useEffect(() => {
     const calculateTotalValue = () => {
-
       let total = 0;
       cartItems.forEach((item) => {
-
         total += item.subTotal;
       });
-
       setTotalValue(total);
     };
 
@@ -36,9 +33,7 @@ export default function Cart() {
     try {
       const userId = localStorage.getItem('userId');
 
-
       for (const item of cartItems) {
-
         const response = await fetch('https://e-commerce-api-bay.vercel.app/api/v1/purchases', {
           method: 'POST',
           headers: {
@@ -59,8 +54,10 @@ export default function Cart() {
       MySwal.fire({
         title: "Compra realizada com sucesso!",
         icon: "success"
-      })
-      // alert('Compra realizada com sucesso!');
+      });
+
+      // Fechar o carrinho após a compra ser realizada com sucesso
+      toggleIsCartOpened();
     } catch (error) {
       console.error('Erro ao realizar compra:', error);
       alert('Erro ao realizar compra. Por favor, tente novamente mais tarde.');
