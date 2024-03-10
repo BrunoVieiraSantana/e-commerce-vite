@@ -53,7 +53,7 @@ const Products = () => {
         <h2  className={`${styles.companyName} ${utils.upperCase} ${utils.textOrange400} ${utils.fs300} ${utils.fw700}`}>Filtrar por Categoria</h2>
         <ul>
           {categories.map(category => (
-            <li className={`p-2 ps-6 relative before:block  before:border-black before:border before:w-3 before:h-3 before:absolute before:left-1 before:rounded-full before:bottom-3 cursor-pointer hover:bg-slate-200 list-none rounded-sm`} key={category.id_category}>
+            <li key={category.id_category}>
               <Link to={`/products?category=${category.id_category}`} className={categoryId === category.id_category ? styles.active : ''}>
                 {category.category_name}
               </Link>

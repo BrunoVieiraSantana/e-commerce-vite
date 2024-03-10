@@ -19,8 +19,8 @@ const Categories = () => {
   }, []);
 
   return (
-    <div>
-      <main  className=" flex justify-center my-14 md:my-20  " >
+    <div className="min-h-[200px]"> {/* Definindo a altura mínima da página */}
+      <main className="flex justify-center my-14 md:my-20">
         <div className="grid md:grid-cols-4 gap-10">
           {categories.map(category => (
             <main key={category.id_category} className="flex items-center shadow-xl bg-slate-100 rounded-lg w-52 h-24">

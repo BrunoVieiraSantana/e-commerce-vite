@@ -117,6 +117,8 @@ export default function Header() {
           }
         >
           <ul className={`${styles.navMenuMobileLinks} ${utils.flex} ${utils.fw700}`}>
+          <li className={`${styles.navMenuMobileLink} ${utils.flex}`}>Páginas</li>
+          <hr style={{ borderTop: '1px solid black', width: '85%' }} />
             <li>
               <Link to="/" className={`${styles.navMenuMobileLink} ${utils.flex}`}>
                 Home
@@ -137,6 +139,7 @@ export default function Header() {
                 Meus Pedidos
               </Link>
             </li>
+            <hr style={{ borderTop: '1px solid black', width: '85%' }} />
             <li>
               {user && (
               <div className={styles.msgmobile}>
@@ -149,9 +152,7 @@ export default function Header() {
               <>
                 <li>
                   <Link className={styles.signupbuttonmobile} to="/signup">Cadastre-se</Link>
-                </li>
-                <li>
-                  <Link className={styles.signinbuttonmobile} to="/signin">Entrar</Link>
+                  <Link style={{ marginLeft: '20px' }} className={styles.signinbuttonmobile} to="/signin">Entrar</Link>
                 </li>
               </>
             )}
