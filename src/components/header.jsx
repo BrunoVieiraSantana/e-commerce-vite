@@ -116,7 +116,7 @@ export default function Header() {
               : styles.navMenuMobile
           }
         >
-          <ul className={`${styles.navMenuMobileLinks} ${utils.flex} ${utils.fw700}`}>
+          <ul className={`${styles.navMenuMobileLinks} ${utils.flex} ${utils.fw700}`} style={{ width: '245px' }}>
           <li className={`${styles.navMenuMobileLink} ${utils.flex}`}>Páginas</li>
           <hr style={{ borderTop: '1px solid black', width: '85%' }} />
             <li>
